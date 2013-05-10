@@ -164,5 +164,14 @@ let s:lisp_desc = [
 \ [ 'ccl',         'clozure',   '',  '' ],
 \ [ 'sbcl',        'sbcl',      '',  '' ] ]
 
+" json
+" reformat need yajl
+NeoBundle 'elzr/vim-json'
+function! JSONFormat()
+  exe '%!json_reformat'
+endfunction
+command! -nargs=0 JSONFormat call JSONFormat()
+map <Leader>j :JSONFormat<CR>
+
 " check
 NeoBundleCheck
