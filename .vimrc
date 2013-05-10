@@ -159,8 +159,10 @@ set backspace=indent,eol,start
 
 " lisp
 NeoBundle 'https://bitbucket.org/kovisoft/slimv'
-" change to ccl
-let g:slimv_swank_cmd = 'start ccl'
+" prefer ccl
+let s:lisp_desc = [
+\ [ 'ccl',         'clozure',   '',  '' ],
+\ [ 'sbcl',        'sbcl',      '',  '' ] ]
 
 " check
 NeoBundleCheck
