@@ -56,6 +56,8 @@ let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_min_keyword_length = 3
 let g:neocomplcache_max_list=10
 
+" NeoBundle 'Valloric/YouCompleteMe'
+
 " motion
 NeoBundle 'joequery/Stupid-EasyMotion'
 let g:mapleader = ","
@@ -86,7 +88,6 @@ set autoread
 set list
 set listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣
 set showbreak=↪
-set nowrap
 
 " minimal lines below cursor
 set scrolloff=3
@@ -159,10 +160,6 @@ set backspace=indent,eol,start
 
 " lisp
 NeoBundle 'https://bitbucket.org/kovisoft/slimv'
-" prefer ccl
-let s:lisp_desc = [
-\ [ 'ccl',         'clozure',   '',  '' ],
-\ [ 'sbcl',        'sbcl',      '',  '' ] ]
 
 " json
 " reformat need yajl
@@ -173,5 +170,34 @@ endfunction
 command! -nargs=0 JSONFormat call JSONFormat()
 map <Leader>j :JSONFormat<CR>
 
+" hex
+NeoBundle 'Shougo/vinarise'
+
+" tasklist
+NeoBundle 'vim-scripts/TaskList.vim'
+map <Leader>l <Plug>TaskList
+
+" sudo
+NeoBundle 'vim-scripts/sudo.vim'
+
+" markdown
+" [sudo] gem install redcarpet pygments.rb
+" [sudo] npm -g install instant-markdown-d
+" [sudo] chmod ugo-x /usr/libexec/path_helper
+NeoBundle 'suan/vim-instant-markdown'
+
+" compile and run
+NeoBundle 'xuhdev/SingleCompile'
+call SingleCompile#SetCompilerTemplate('objc', 'clang',
+      \ 'the Clang C and Objective-C compiler', 'clang',
+      \ '-lobjc -framework Cocoa -g -o $(FILE_TITLE)$', g:SingleCompile_common_run_command)
+
 " check
 NeoBundleCheck
+
+" macvim
+if has("gui_macvim")
+  set transparency=10
+  set guifont=Liberation\ Mono:h12
+  autocmd VimLeave * macaction terminate:
+endif
