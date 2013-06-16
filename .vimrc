@@ -191,6 +191,7 @@ NeoBundle 'xuhdev/SingleCompile'
 call SingleCompile#SetCompilerTemplate('objc', 'clang',
       \ 'the Clang C and Objective-C compiler', 'clang',
       \ '-lobjc -framework Cocoa -g -o $(FILE_TITLE)$', g:SingleCompile_common_run_command)
+nmap <Leader>r :SCCompileRun<cr>
 
 " check
 NeoBundleCheck
