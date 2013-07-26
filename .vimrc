@@ -44,17 +44,17 @@ NeoBundle 'Shougo/unite-outline'
 map <C-\> :Unite outline<CR>
 
 " Code completion
-NeoBundle'Shougo/neocomplcache'
-set lazyredraw
-let g:acp_enableAtStartup = 0
-let g:neocomplcache_enable_at_startup = 1 
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_enable_auto_select = 1
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_min_keyword_length = 3
-let g:neocomplcache_max_list=10
+" NeoBundle'Shougo/neocomplcache'
+" set lazyredraw
+" let g:acp_enableAtStartup = 0
+" let g:neocomplcache_enable_at_startup = 1 
+" let g:neocomplcache_enable_smart_case = 1
+" let g:neocomplcache_enable_camel_case_completion = 1
+" let g:neocomplcache_enable_underbar_completion = 1
+" let g:neocomplcache_enable_auto_select = 1
+" let g:neocomplcache_min_syntax_length = 3
+" let g:neocomplcache_min_keyword_length = 3
+" let g:neocomplcache_max_list=10
 
 " NeoBundle 'Valloric/YouCompleteMe'
 
@@ -131,15 +131,14 @@ hi CursorLine cterm=none ctermbg=236
 " cursor shape
 NeoBundle 'jszakmeister/vim-togglecursor'
 
-" command-t
-" cd ~/.vim/bundle/command-t
-" ruby extconf.rb
-" make
-NeoBundle 'git://git.wincent.com/command-t.git'
+" File finder
+NeoBundle 'kien/ctrlp.vim'
+let g:ctrlp_map = '<C-P>'
+
 
 " ack
 NeoBundle 'mileszs/ack.vim'
-nnoremap <Leader>a :Ack<space>
+nnoremap <C-a> :Ack<space>
 
 " nerdtree
 NeoBundle 'scrooloose/nerdtree'
@@ -150,16 +149,22 @@ NeoBundle 'kana/vim-scratch'
 nmap <C-@> <Plug>(scratch-open)
 
 " global tags
-NeoBundle 'vim-scripts/gtags.vim'
-map <C-n> :cn<CR>
-map <C-p> :cp<CR>
-map <C-]> :GtagsCursor<CR>
+" NeoBundle 'vim-scripts/gtags.vim'
+" map <C-n> :cn<CR>
+" map <C-p> :cp<CR>
+" map <C-]> :GtagsCursor<CR>
 
 " backspace fix
 set backspace=indent,eol,start
 
 " lisp
 NeoBundle 'https://bitbucket.org/kovisoft/slimv'
+let g:slimv_disable_clojure=1 " disable for clojure since slimv has conflict with ack, ctrlp, command-t ........
+
+" Clojure
+NeoBundle 'tpope/vim-fireplace'
+NeoBundle 'ssh://hg@bitbucket.org/kovisoft/paredit'
+NeoBundle 'jebberjeb/vim-clojure-conceal'
 
 " json
 " reformat need yajl
@@ -190,7 +195,7 @@ NeoBundle 'suan/vim-instant-markdown'
 NeoBundle 'xuhdev/SingleCompile'
 call SingleCompile#SetCompilerTemplate('objc', 'clang',
       \ 'the Clang C and Objective-C compiler', 'clang',
-      \ '-lobjc -framework Cocoa -g -o $(FILE_TITLE)$', g:SingleCompile_common_run_command)
+      \ '-F /System/Library/Frameworks -lobjc -framework Cocoa -framework Foundation -g -o $(FILE_TITLE)$', g:SingleCompile_common_run_command)
 nmap <Leader>r :SCCompileRun<cr>
 
 " check
