@@ -1,0 +1,7 @@
+alias ccl='rlwrap ccl'
+alias clj='rlwrap clj'
+alias gst='git status'
+alias gd='git diff'
+alias gl='git pull'
+alias gp='git push'
+alias gc='git commit'
