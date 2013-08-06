@@ -204,6 +204,6 @@ NeoBundleCheck
 " macvim
 if has("gui_macvim")
   set transparency=10
-  set guifont=Liberation\ Mono:h12
+  set guifont=PragmataPro:h12
   autocmd VimLeave * macaction terminate:
 endif
