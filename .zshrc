@@ -9,6 +9,9 @@ source ~/.zsh/prompt.zsh
 source ~/.zsh/aliases.zsh
 
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+ZSH_HIGHLIGHT_PATTERNS+=('rm -rf [~/]*' 'fg=white,bold,bg=red')
+ZSH_HIGHLIGHT_STYLES[path]=''
 
 source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 bindkey -M emacs '^P' history-substring-search-up
@@ -21,6 +24,7 @@ export LSCOLORS="gxfxcxdxbxegedabagacad"
 export GIT_EDITOR="vim"
 export WORDCHARS=''
 
-export PATH=/usr/local/bin:~/Dropbox/utils:$PATH
+export ANDROID_SDK_HOME=$HOME/adt-bundle-mac/sdk
+export PATH=/usr/local/bin:~/Dropbox/utils:$ANDROID_SDK_HOME/tools:$PATH
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
