@@ -7,6 +7,7 @@ source ~/.zsh/completion.zsh
 source ~/.zsh/history.zsh
 source ~/.zsh/prompt.zsh
 source ~/.zsh/aliases.zsh
+source ~/.zsh/utils.zsh
 
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
@@ -25,6 +26,6 @@ export GIT_EDITOR="vim"
 export WORDCHARS=''
 
 export ANDROID_SDK_HOME=$HOME/adt-bundle-mac/sdk
-export PATH=/usr/local/bin:~/Dropbox/utils:$ANDROID_SDK_HOME/tools:$PATH
+export PATH=/usr/local/bin:~/Dropbox/utils:$ANDROID_SDK_HOME/tools:$ANDROID_SDK_HOME/platform-tools:$PATH
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
