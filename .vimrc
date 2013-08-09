@@ -166,6 +166,8 @@ NeoBundle 'tpope/vim-fireplace'
 NeoBundle 'ssh://hg@bitbucket.org/kovisoft/paredit'
 NeoBundle 'jebberjeb/vim-clojure-conceal'
 
+NeoBundle 'tpope/vim-surround'
+
 " json
 " reformat need yajl
 NeoBundle 'elzr/vim-json'
@@ -196,7 +198,27 @@ NeoBundle 'xuhdev/SingleCompile'
 call SingleCompile#SetCompilerTemplate('objc', 'clang',
       \ 'the Clang C and Objective-C compiler', 'clang',
       \ '-F /System/Library/Frameworks -lobjc -framework Cocoa -framework Foundation -g -o $(FILE_TITLE)$', g:SingleCompile_common_run_command)
+call SingleCompile#SetPriority('objc', 'clang', 70)
 nmap <Leader>r :SCCompileRun<cr>
+
+" snip
+" NeoBundle 'garbas/vim-snipmate'
+NeoBundle 'honza/vim-snippets'
+NeoBundle 'Shougo/neosnippet.vim'
+
+let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?  "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?  "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
 
 " check
 NeoBundleCheck
@@ -207,3 +229,6 @@ if has("gui_macvim")
   set guifont=PragmataPro:h12
   autocmd VimLeave * macaction terminate:
 endif
+
+" file type fix
+let filetype_m = 'objc'
