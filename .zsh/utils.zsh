@@ -5,3 +5,12 @@ function pwdf() {
     end tell
 EOF
 }
+
+function tree() {
+  if [[ $# -eq 0 ]]; then
+    DIR="."
+  else
+    DIR=$1
+  fi
+  find $DIR -print | sort | sed 's;[^/]*/;|___;g;s;___|; |;g'
+}
