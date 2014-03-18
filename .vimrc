@@ -133,12 +133,14 @@ NeoBundle 'jszakmeister/vim-togglecursor'
 
 " File finder
 NeoBundle 'kien/ctrlp.vim'
-let g:ctrlp_map = '<C-P>'
+" let g:ctrlp_map = '<L-P>'
+nnoremap <Leader>p :CtrlP<cr>
 
 
 " ack
 NeoBundle 'mileszs/ack.vim'
 nnoremap <C-a> :Ack<space>
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " nerdtree
 NeoBundle 'scrooloose/nerdtree'
