@@ -9,6 +9,10 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+" pathogen
+NeoBundle 'tpope/vim-pathogen'
+call pathogen#infect()
+
 " basic
 filetype plugin indent on
 syntax on 
@@ -33,30 +37,20 @@ function! CurDir()
 endfunction
 
 " status line
-NeoBundle 'terryma/vim-powerline', {'rev':'develop'}
-set t_Co=256 
-let g:Powerline_symbols = 'fancy' 
+NeoBundle 'itchyny/lightline.vim'
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'filename', 'modified', 'fugitive' ] ]
+      \ },
+      \ 'component': {
+      \   'readonly': '%{&readonly ? "x" : ""}',
+      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+      \ },
+      \ 'subseparator': { 'left': '>', 'right': '<' },
+      \ }
 set laststatus=2
-
-" outline
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/unite-outline'
-map <C-\> :Unite outline<CR>
-
-" Code completion
-" NeoBundle'Shougo/neocomplcache'
-" set lazyredraw
-" let g:acp_enableAtStartup = 0
-" let g:neocomplcache_enable_at_startup = 1 
-" let g:neocomplcache_enable_smart_case = 1
-" let g:neocomplcache_enable_camel_case_completion = 1
-" let g:neocomplcache_enable_underbar_completion = 1
-" let g:neocomplcache_enable_auto_select = 1
-" let g:neocomplcache_min_syntax_length = 3
-" let g:neocomplcache_min_keyword_length = 3
-" let g:neocomplcache_max_list=10
-
-" NeoBundle 'Valloric/YouCompleteMe'
 
 " motion
 NeoBundle 'joequery/Stupid-EasyMotion'
@@ -109,12 +103,6 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-" tab
-nnoremap <C-t><C-n> :tabnew<cr>
-nnoremap <C-t><C-w> :tabclose<cr>
-nnoremap <C-t><C-j> :tabprev<cr>
-nnoremap <C-t><C-k> :tabnext<cr>
-
 " system clipboard
 if has ('unnamedplus')
   set clipboard=unnamedplus
@@ -159,17 +147,6 @@ nmap <C-@> <Plug>(scratch-open)
 " backspace fix
 set backspace=indent,eol,start
 
-" lisp
-NeoBundle 'https://bitbucket.org/kovisoft/slimv'
-let g:slimv_disable_clojure=1 " disable for clojure since slimv has conflict with ack, ctrlp, command-t ........
-
-" Clojure
-NeoBundle 'tpope/vim-fireplace'
-NeoBundle 'ssh://hg@bitbucket.org/kovisoft/paredit'
-NeoBundle 'jebberjeb/vim-clojure-conceal'
-
-NeoBundle 'tpope/vim-surround'
-
 " json
 " reformat need yajl
 NeoBundle 'elzr/vim-json'
@@ -189,38 +166,87 @@ map <Leader>l <Plug>TaskList
 " sudo
 NeoBundle 'vim-scripts/sudo.vim'
 
-" markdown
-" [sudo] gem install redcarpet pygments.rb
-" [sudo] npm -g install instant-markdown-d
-" [sudo] chmod ugo-x /usr/libexec/path_helper
-NeoBundle 'suan/vim-instant-markdown'
-
 " compile and run
 NeoBundle 'xuhdev/SingleCompile'
 call SingleCompile#SetCompilerTemplate('objc', 'clang',
       \ 'the Clang C and Objective-C compiler', 'clang',
-      \ '-F /System/Library/Frameworks -lobjc -framework Cocoa -framework Foundation -g -o $(FILE_TITLE)$', g:SingleCompile_common_run_command)
+      \ '-F /System/Library/Frameworks -lobjc -framework Cocoa -framework Foundation -g -fobjc-arc -o $(FILE_TITLE)$', g:SingleCompile_common_run_command)
 call SingleCompile#SetPriority('objc', 'clang', 70)
 nmap <Leader>r :SCCompileRun<cr>
 
-" snip
-" NeoBundle 'garbas/vim-snipmate'
-NeoBundle 'honza/vim-snippets'
-NeoBundle 'Shougo/neosnippet.vim'
+" newlisp
+NeoBundle 'vim-scripts/newlisp'
+au BufRead,BufNewFile *.lsp set filetype=newlisp
+call SingleCompile#SetCompilerTemplate('newlisp', 'newlisp',
+      \ 'the Clang C and Objective-C compiler', 'newlisp',
+      \ '-x $(FILE_NAME)$ $(FILE_TITLE)$',  'chmod +x $(FILE_TITLE)$ && $(FILE_EXEC)$')
+nmap <Leader>r :SCCompileRun<cr>
 
-let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+" Clojure
+NeoBundle 'tpope/vim-fireplace'
+NeoBundle 'ssh://hg@bitbucket.org/kovisoft/paredit'
+NeoBundle 'jebberjeb/vim-clojure-conceal'
 
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?  "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?  "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
+NeoBundle 'tpope/vim-surround'
+
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'toyamarinyon/vim-swift'
+NeoBundle 'jelera/vim-javascript-syntax'
+
+" html tag
+NeoBundle 'gregsexton/MatchTag'
+NeoBundle 'matchit.zip'
+
+" ctags
+" `npm -g https://github.com/ramitos/jsctags` for js
+NeoBundle 'majutsushi/tagbar'
+map <Leader>t :TagbarToggle<cr>
+" `gem install CoffeeTags` first
+NeoBundle 'lukaszkorecki/CoffeeTags'
+" add a definition for Objective-C to tagbar
+" put lines below to ~/.vim/ctags-options-objc-source
+" --langdef=objc
+" --langmap=objc:.m.mm.h
+" --regex-objc=/\@interface[[:space:]]+([[:alnum:]_]+)[[:space:]]*:/\1/i,interface/
+" --regex-objc=/\@interface[[:space:]]+([[:alnum:]_]+)[[:space:]]*\(([[:alnum:]_]*)\)/\1(\2)/x,extension/
+" --regex-objc=/\@implementation[[:space:]]+([[:alnum:]_]+)[[:space:]]*$/\1/I,implementation/
+" --regex-objc=/\@implementation[[:space:]]+([[:alnum:]_]+)[[:space:]]*\(([[:alnum:]_]*)\)/\1(\2)/I,implementation/
+" --regex-objc=/\@protocol[[:space:]]+([[:alnum:]_]+)/\1/P,protocol/
+" --regex-objc=/\@property[[:space:]]*\([[:alnum:],=[:space:]]+\)*[[:space:]]+([^;]*)[[:space:]]+([[:alnum:]_]+)[[:space:]]*;$/\2/p,property/
+" --regex-objc=/\@property[[:space:]]*\([[:alnum:],=[:space:]]+\)*[[:space:]]+[[:alnum:]]+[[:space:]]*<[[:alnum:]]+>[[:space:]]+([[:alnum:]_]+)/\1/p,property/
+" --regex-objc=/^[[:space:]]*([-+])[[:space:]]*\([[:alpha:]_][^)]*\)[[:space:]]*(([[:alpha:]_][^:;{]+:?)(\([^)]+\)[[:alnum:]_]+[[:space:]\n]*)?){1,}/\1\3\6\9/M,method definition/
+" --regex-objc=/^[^#@[:space:]][^=]*[[:space:]]([[:alpha:]_][[:alnum:]_]*)[[:space:]]*=/\1/c,constant/
+" --regex-objc=/^[[:space:]]*typedef[[:space:]][^;]+[[:space:]]([[:alpha:]_][[:alnum:]]*)[[:space:]]*;/\1/t,typedef/
+" --regex-objc=/[[:space:]]NS_ENUM\([[:alnum:]]+[[:space:]]*,[[:space:]]*([[:alnum:]]+)\)/\1/e,enumeration/
+" --regex-objc=/^#pragma[[:space:]]+mark[[:space:]]+-?[[:space:]]+([[:alnum:][:space:]]+)/\1/g,pragma/
+let g:tagbar_type_objc = {
+  \ 'ctagstype': 'objc',
+  \ 'ctagsargs': [
+    \ '-f',
+    \ '-',
+    \ '--excmd=pattern',
+    \ '--extra=',
+    \ '--format=2',
+    \ '--fields=nksaSmt',
+    \ '--options=' . expand('~/.vim/ctags-options-objc-source'),
+    \ '--objc-kinds=-N',
+  \ ],
+  \ 'sro': ' ',
+  \ 'kinds': [
+    \ 'c:constant',
+    \ 'e:enum',
+    \ 't:typedef',
+    \ 'i:interface',
+    \ 'P:protocol',
+    \ 'p:property',
+    \ 'I:implementation',
+    \ 'M:method',
+    \ 'g:pragma',
+  \ ],
+\ }
+
+" markdown
+NeoBundle 'gabrielelana/vim-markdown'
 
 " check
 NeoBundleCheck
