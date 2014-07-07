@@ -37,7 +37,11 @@ export PATH=/usr/local/share/npm/bin:/usr/local/bin:/usr/local/sbin:/usr/libexec
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 # z jump
+if [[ `uname` == 'Darwin' ]]; then
 [[ -s "`brew --prefix`/etc/profile.d/z.sh" ]] && . `brew --prefix`/etc/profile.d/z.sh
+else
+. /usr/local/z.sh
+fi
 
 # local only
 [[ -s "$HOME/.zsh_custom.sh" ]] && . "$HOME/.zsh_custom.sh" ]]
