@@ -5,5 +5,10 @@ alias gd='git diff'
 alias gu='git up'
 alias gp='git push'
 alias gc='git commit'
-alias ls='ls -Gp'
 alias csi='rlwrap csi'
+
+if [[ `uname` == 'Darwin' ]]; then
+alias ls='ls -Gp'
+else
+alias ls='ls --color'
+fi
