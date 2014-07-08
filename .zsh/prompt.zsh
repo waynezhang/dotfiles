@@ -20,7 +20,7 @@ function precmd {
     color=$fg[red]
   fi
 
-  PROMPT='%{$fg[cyan]%}%c%{$reset_color%}%{$fg[red]%}$(git-branch)%{$reset_color%}%{$fg[yellow]%}$(git-status)%{$reset_color%} %(!.#.→) '
+  PROMPT='%{$fg[cyan]%}%c.%m%{$reset_color%}%{$fg[red]%}$(git-branch)%{$reset_color%}%{$fg[yellow]%}$(git-status)%{$reset_color%} %(!.#.→) '
   RPROMPT=' → %{$color%}$?%{$reset_color%}'
   if [ $#jobstates -ne 0 ]; then
     RPROMPT="%{$fg[green]%}%j%{$reset_color%}${RPROMPT}"
