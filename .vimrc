@@ -5,9 +5,10 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
+call neobundle#end()
 
 " pathogen
 NeoBundle 'tpope/vim-pathogen'
@@ -178,20 +179,27 @@ nmap <Leader>r :SCCompileRun<cr>
 NeoBundle 'vim-scripts/newlisp'
 au BufRead,BufNewFile *.lsp set filetype=newlisp
 call SingleCompile#SetCompilerTemplate('newlisp', 'newlisp',
-      \ 'the Clang C and Objective-C compiler', 'newlisp',
+      \ 'newlisp runner', 'newlisp',
       \ '-x $(FILE_NAME)$ $(FILE_TITLE)$',  'chmod +x $(FILE_TITLE)$ && $(FILE_EXEC)$')
 nmap <Leader>r :SCCompileRun<cr>
 
 " Clojure
 NeoBundle 'tpope/vim-fireplace'
-NeoBundle 'ssh://hg@bitbucket.org/kovisoft/paredit'
+NeoBundle 'paredit.vim'
 NeoBundle 'jebberjeb/vim-clojure-conceal'
 
 NeoBundle 'tpope/vim-surround'
 
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'toyamarinyon/vim-swift'
-NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'scrooloose/syntastic'
+
+" Javascript
+NeoBundle 'othree/yajs.vim'
+call SingleCompile#SetCompilerTemplate('javascript', 'babel',
+      \ 'the Babel compiler', 'babel-node',
+      \ '', '')
+call SingleCompile#SetPriority('javascript', 'babel', 60)
 
 " html tag
 NeoBundle 'gregsexton/MatchTag'
@@ -201,8 +209,6 @@ NeoBundle 'matchit.zip'
 " `npm -g https://github.com/ramitos/jsctags` for js
 NeoBundle 'majutsushi/tagbar'
 map <Leader>t :TagbarToggle<cr>
-" `gem install CoffeeTags` first
-NeoBundle 'lukaszkorecki/CoffeeTags'
 " add a definition for Objective-C to tagbar
 " put lines below to ~/.vim/ctags-options-objc-source
 " --langdef=objc
@@ -247,6 +253,17 @@ let g:tagbar_type_objc = {
 
 " markdown
 NeoBundle 'gabrielelana/vim-markdown'
+
+" align
+NeoBundle 'godlygeek/tabular'
+
+" jade
+NeoBundle 'digitaltoad/vim-jade'
+
+" grunt
+NeoBundle 'AtsushiM/grunt-default.vim'
+let g:grunt_default_file = ['coffee']
+let g:grunt_default_makefile = 'Gruntfile.coffee'
 
 " check
 NeoBundleCheck
