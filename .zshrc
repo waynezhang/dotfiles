@@ -31,10 +31,7 @@ export GIT_EDITOR="vim"
 export WORDCHARS=''
 
 # path
-export ANDROID_SDK_HOME=~/android-sdk
-export PATH=/usr/local/share/npm/bin:/usr/local/bin:/usr/local/sbin:/usr/libexec:~/Dropbox/utils/dex2jar:~/Dropbox/utils:$ANDROID_SDK_HOME/tools:$ANDROID_SDK_HOME/platform-tools:$PATH
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+export PATH=/usr/local/share/npm/bin:/usr/local/bin:/usr/local/sbin:/usr/libexec:~/Dropbox/utils/dex2jar:$PATH
 
 # z jump
 if [[ `uname` == 'Darwin' ]]; then
@@ -43,7 +40,14 @@ else
 . /usr/local/z.sh
 fi
 
+# zce
+source ~/.zsh/zce.zsh/zce.zsh
+bindkey "^Xz" zce
+
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
+
 # local only
 [[ -s "$HOME/.zsh_custom.sh" ]] && . "$HOME/.zsh_custom.sh" ]]
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+eval "$(rbenv init - zsh)"
