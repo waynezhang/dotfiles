@@ -1,22 +1,6 @@
-set nocompatible
-
-" package
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-
-call neobundle#begin(expand('~/.vim/bundle/'))
-" Let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-" pathogen
-NeoBundle 'tpope/vim-pathogen'
-set runtimepath+=~/.vim/bundle/vim-pathogen/
-call pathogen#infect()
-
-" basic
 filetype plugin indent on
 syntax on 
+set nocompatible
 set tabstop=2
 set shiftwidth=2
 set nu
@@ -26,16 +10,61 @@ set showmatch
 set encoding=utf-8
 set expandtab
 set autoindent
+set fcs=vert:│ " solid vsplit separator
+set virtualedit=onemore " virtual space at eol
+set autoread " auto reload
+set list " invisable chars
+set listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣
+set showbreak=↪
+set scrolloff=3 " minimal lines below cursor
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set vb " no bell
+set t_vb=
+set nobackup " no backup
+set nowritebackup
+set noswapfile
+set backspace=indent,eol,start " backspace fix
 
-" color
 colorscheme desert
 se cursorline
+hi CursorLine cterm=none ctermbg=236
+
+let filetype_m = 'objc' " file type fix
+
+" system clipboard
+if has ('unnamedplus')
+  set clipboard=unnamedplus
+else
+  set clipboard=unnamed
+endif
 
 " functions
 function! CurDir()
   let curdir = substitute(getcwd(), "/home/wayne/", "‾/", "g")
   return curdir
 endfunction
+
+" macvim
+if has("gui_macvim")
+  set transparency=10
+  set guifont=PragmataPro:h12
+  autocmd VimLeave * macaction terminate:
+endif
+
+" NeoBundle start
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#begin(expand('~/.vim/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'tpope/vim-pathogen'
+set runtimepath+=~/.vim/bundle/vim-pathogen/
+call pathogen#infect()
 
 " status line
 NeoBundle 'itchyny/lightline.vim'
@@ -65,69 +94,9 @@ highlight SignifySignAdd ctermbg=black ctermfg=green
 highlight SignifySignDelete ctermbg=black ctermfg=red
 highlight SignifySignChange ctermbg=black ctermfg=yellow
 
-" multi cursor
-NeoBundle 'terryma/vim-multiple-cursors'
-let g:multi_cursor_next_key = '<C-j>'
-let g:multi_cursor_prev_key = '<C-k>'
-
-" expand region
-NeoBundle 'terryma/vim-expand-region'
-
-" solid vsplit separator
-set fcs=vert:│
-
-" virtual space at eol
-set virtualedit=onemore
-
-" auto reload
-set autoread
-
-" invisable chars
-set list
-set listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣
-set showbreak=↪
-
-" minimal lines below cursor
-set scrolloff=3
-
-" search
-set hlsearch
-set incsearch
-
-" case insensitive search
-set ignorecase
-set smartcase
-
-" no bell
-set vb
-set t_vb=
-
-" no backup
-set nobackup
-set nowritebackup
-set noswapfile
-
-" system clipboard
-if has ('unnamedplus')
-  set clipboard=unnamedplus
-else
-  set clipboard=unnamed
-endif
-
-" color
-NeoBundle 'guns/xterm-color-table.vim'
-
-" highlight current line
-hi CursorLine cterm=none ctermbg=236
-
-" cursor shape
-NeoBundle 'jszakmeister/vim-togglecursor'
-
 " File finder
 NeoBundle 'kien/ctrlp.vim'
-" let g:ctrlp_map = '<L-P>'
 nnoremap <Leader>p :CtrlP<cr>
-
 
 " ack
 NeoBundle 'mileszs/ack.vim'
@@ -138,19 +107,6 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 NeoBundle 'scrooloose/nerdtree'
 nnoremap <Leader><tab> :NERDTreeToggle<cr>
 
-" scratch
-NeoBundle 'kana/vim-scratch'
-nmap <C-@> <Plug>(scratch-open)
-
-" global tags
-" NeoBundle 'vim-scripts/gtags.vim'
-" map <C-n> :cn<CR>
-" map <C-p> :cp<CR>
-" map <C-]> :GtagsCursor<CR>
-
-" backspace fix
-set backspace=indent,eol,start
-
 " json
 " reformat need yajl
 NeoBundle 'elzr/vim-json'
@@ -159,16 +115,6 @@ function! JSONFormat()
 endfunction
 command! -nargs=0 JSONFormat call JSONFormat()
 map <Leader>j :JSONFormat<CR>
-
-" hex
-NeoBundle 'Shougo/vinarise'
-
-" tasklist
-NeoBundle 'vim-scripts/TaskList.vim'
-map <Leader>l <Plug>TaskList
-
-" sudo
-NeoBundle 'vim-scripts/sudo.vim'
 
 " compile and run
 NeoBundle 'xuhdev/SingleCompile'
@@ -191,12 +137,6 @@ NeoBundle 'tpope/vim-fireplace'
 NeoBundle 'paredit.vim'
 NeoBundle 'jebberjeb/vim-clojure-conceal'
 
-NeoBundle 'tpope/vim-surround'
-
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'toyamarinyon/vim-swift'
-NeoBundle 'scrooloose/syntastic'
-
 " Javascript
 NeoBundle 'othree/yajs.vim'
 call SingleCompile#SetCompilerTemplate('javascript', 'babel',
@@ -204,80 +144,24 @@ call SingleCompile#SetCompilerTemplate('javascript', 'babel',
       \ '', '')
 call SingleCompile#SetPriority('javascript', 'babel', 60)
 
-" html tag
-NeoBundle 'gregsexton/MatchTag'
-NeoBundle 'matchit.zip'
-
-" ctags
-" `npm -g https://github.com/ramitos/jsctags` for js
-NeoBundle 'majutsushi/tagbar'
-map <Leader>t :TagbarToggle<cr>
-" add a definition for Objective-C to tagbar
-" put lines below to ~/.vim/ctags-options-objc-source
-" --langdef=objc
-" --langmap=objc:.m.mm.h
-" --regex-objc=/\@interface[[:space:]]+([[:alnum:]_]+)[[:space:]]*:/\1/i,interface/
-" --regex-objc=/\@interface[[:space:]]+([[:alnum:]_]+)[[:space:]]*\(([[:alnum:]_]*)\)/\1(\2)/x,extension/
-" --regex-objc=/\@implementation[[:space:]]+([[:alnum:]_]+)[[:space:]]*$/\1/I,implementation/
-" --regex-objc=/\@implementation[[:space:]]+([[:alnum:]_]+)[[:space:]]*\(([[:alnum:]_]*)\)/\1(\2)/I,implementation/
-" --regex-objc=/\@protocol[[:space:]]+([[:alnum:]_]+)/\1/P,protocol/
-" --regex-objc=/\@property[[:space:]]*\([[:alnum:],=[:space:]]+\)*[[:space:]]+([^;]*)[[:space:]]+([[:alnum:]_]+)[[:space:]]*;$/\2/p,property/
-" --regex-objc=/\@property[[:space:]]*\([[:alnum:],=[:space:]]+\)*[[:space:]]+[[:alnum:]]+[[:space:]]*<[[:alnum:]]+>[[:space:]]+([[:alnum:]_]+)/\1/p,property/
-" --regex-objc=/^[[:space:]]*([-+])[[:space:]]*\([[:alpha:]_][^)]*\)[[:space:]]*(([[:alpha:]_][^:;{]+:?)(\([^)]+\)[[:alnum:]_]+[[:space:]\n]*)?){1,}/\1\3\6\9/M,method definition/
-" --regex-objc=/^[^#@[:space:]][^=]*[[:space:]]([[:alpha:]_][[:alnum:]_]*)[[:space:]]*=/\1/c,constant/
-" --regex-objc=/^[[:space:]]*typedef[[:space:]][^;]+[[:space:]]([[:alpha:]_][[:alnum:]]*)[[:space:]]*;/\1/t,typedef/
-" --regex-objc=/[[:space:]]NS_ENUM\([[:alnum:]]+[[:space:]]*,[[:space:]]*([[:alnum:]]+)\)/\1/e,enumeration/
-" --regex-objc=/^#pragma[[:space:]]+mark[[:space:]]+-?[[:space:]]+([[:alnum:][:space:]]+)/\1/g,pragma/
-let g:tagbar_type_objc = {
-  \ 'ctagstype': 'objc',
-  \ 'ctagsargs': [
-    \ '-f',
-    \ '-',
-    \ '--excmd=pattern',
-    \ '--extra=',
-    \ '--format=2',
-    \ '--fields=nksaSmt',
-    \ '--options=' . expand('~/.vim/ctags-options-objc-source'),
-    \ '--objc-kinds=-N',
-  \ ],
-  \ 'sro': ' ',
-  \ 'kinds': [
-    \ 'c:constant',
-    \ 'e:enum',
-    \ 't:typedef',
-    \ 'i:interface',
-    \ 'P:protocol',
-    \ 'p:property',
-    \ 'I:implementation',
-    \ 'M:method',
-    \ 'g:pragma',
-  \ ],
-\ }
-
-" markdown
-NeoBundle 'gabrielelana/vim-markdown'
-
-" align
-NeoBundle 'godlygeek/tabular'
-
-" jade
-NeoBundle 'digitaltoad/vim-jade'
-
 " grunt
 NeoBundle 'AtsushiM/grunt-default.vim'
 let g:grunt_default_file = ['coffee']
 let g:grunt_default_makefile = 'Gruntfile.coffee'
 
-" check
+NeoBundle 'gabrielelana/vim-markdown' " markdown
+NeoBundle 'godlygeek/tabular' " align
+NeoBundle 'digitaltoad/vim-jade' " jade
+NeoBundle 'Shougo/vinarise' " hex
+NeoBundle 'guns/xterm-color-table.vim' " color
+NeoBundle 'jszakmeister/vim-togglecursor' " cursor shape
+NeoBundle 'vim-scripts/TaskList.vim' " tasklist
+NeoBundle 'kchmck/vim-coffee-script' " coffee
+NeoBundle 'toyamarinyon/vim-swift' " swift
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'gregsexton/MatchTag' " html tag
+NeoBundle 'matchit.zip'
+
 call neobundle#end()
 NeoBundleCheck
-
-" macvim
-if has("gui_macvim")
-  set transparency=10
-  set guifont=PragmataPro:h12
-  autocmd VimLeave * macaction terminate:
-endif
-
-" file type fix
-let filetype_m = 'objc'
+" NeoBundle end
