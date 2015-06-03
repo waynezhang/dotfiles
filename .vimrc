@@ -59,8 +59,11 @@ let g:mapleader = ","
 
 " git
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'mhinz/vim-signify'
 highlight SignColumn ctermbg=black
+highlight SignifySignAdd ctermbg=black ctermfg=green
+highlight SignifySignDelete ctermbg=black ctermfg=red
+highlight SignifySignChange ctermbg=black ctermfg=yellow
 
 " multi cursor
 NeoBundle 'terryma/vim-multiple-cursors'
