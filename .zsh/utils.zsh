@@ -22,3 +22,12 @@ function aastack() {
 function pprov() {
   security cms -D -i $1
 }
+
+function gi() {
+  curl -L -s https://www.gitignore.io/api/$@ ;
+}
+
+function adb-backup() {
+  adb backup $1
+  dd if=backup.ab bs=1 skip=24 | python -c "import zlib,sys;sys.stdout.write(zlib.decompress(sys.stdin.read()))" | tar -xvf -
+}
