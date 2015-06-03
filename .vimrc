@@ -8,10 +8,10 @@ endif
 call neobundle#begin(expand('~/.vim/bundle/'))
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
-call neobundle#end()
 
 " pathogen
 NeoBundle 'tpope/vim-pathogen'
+set runtimepath+=~/.vim/bundle/vim-pathogen/
 call pathogen#infect()
 
 " basic
@@ -172,10 +172,10 @@ NeoBundle 'vim-scripts/sudo.vim'
 
 " compile and run
 NeoBundle 'xuhdev/SingleCompile'
-call SingleCompile#SetCompilerTemplate('objc', 'clang',
+call SingleCompile#SetCompilerTemplate('objc', 'clang-cocoa',
       \ 'the Clang C and Objective-C compiler', 'clang',
-      \ '-F /System/Library/Frameworks -lobjc -framework Cocoa -framework Foundation -g -fobjc-arc -o $(FILE_TITLE)$', g:SingleCompile_common_run_command)
-call SingleCompile#SetPriority('objc', 'clang', 70)
+      \ '-framework Cocoa -g -fobjc-arc -o $(FILE_TITLE)$', g:SingleCompile_common_run_command)
+call SingleCompile#SetPriority('objc', 'clang-cocoa', 70)
 nmap <Leader>r :SCCompileRun<cr>
 
 " newlisp
@@ -269,6 +269,7 @@ let g:grunt_default_file = ['coffee']
 let g:grunt_default_makefile = 'Gruntfile.coffee'
 
 " check
+call neobundle#end()
 NeoBundleCheck
 
 " macvim
