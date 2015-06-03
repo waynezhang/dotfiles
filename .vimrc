@@ -99,9 +99,8 @@ NeoBundle 'kien/ctrlp.vim'
 nnoremap <Leader>p :CtrlP<cr>
 
 " ack
-NeoBundle 'mileszs/ack.vim'
-nnoremap <C-a> :Ack<space>
-let g:ackprg = 'ag --nogroup --nocolor --column'
+NeoBundle 'rking/ag.vim'
+nnoremap <C-a> :Ag<space>
 
 " nerdtree
 NeoBundle 'scrooloose/nerdtree'
