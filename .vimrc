@@ -115,21 +115,14 @@ endfunction
 command! -nargs=0 JSONFormat call JSONFormat()
 map <Leader>j :JSONFormat<CR>
 
-" compile and run
-NeoBundle 'xuhdev/SingleCompile'
-call SingleCompile#SetCompilerTemplate('objc', 'clang-cocoa',
-      \ 'the Clang C and Objective-C compiler', 'clang',
-      \ '-framework Cocoa -g -fobjc-arc -o $(FILE_TITLE)$', g:SingleCompile_common_run_command)
-call SingleCompile#SetPriority('objc', 'clang-cocoa', 70)
-nmap <Leader>r :SCCompileRun<cr>
+" run
+NeoBundle 'thinca/vim-quickrun'
+let g:quickrun_config = { }
+nmap <Leader>r :QuickRun<cr>
 
 " newlisp
 NeoBundle 'vim-scripts/newlisp'
 au BufRead,BufNewFile *.lsp set filetype=newlisp
-call SingleCompile#SetCompilerTemplate('newlisp', 'newlisp',
-      \ 'newlisp runner', 'newlisp',
-      \ '-x $(FILE_NAME)$ $(FILE_TITLE)$',  'chmod +x $(FILE_TITLE)$ && $(FILE_EXEC)$')
-nmap <Leader>r :SCCompileRun<cr>
 
 " Clojure
 NeoBundle 'tpope/vim-fireplace'
@@ -138,10 +131,7 @@ NeoBundle 'jebberjeb/vim-clojure-conceal'
 
 " Javascript
 NeoBundle 'othree/yajs.vim'
-call SingleCompile#SetCompilerTemplate('javascript', 'babel',
-      \ 'the Babel compiler', 'babel-node',
-      \ '', '')
-call SingleCompile#SetPriority('javascript', 'babel', 60)
+let g:quickrun_config.javascript = { 'command': 'node', 'cmdopt': '--harmony'}
 
 " grunt
 NeoBundle 'AtsushiM/grunt-default.vim'
@@ -156,10 +146,10 @@ NeoBundle 'guns/xterm-color-table.vim' " color
 NeoBundle 'jszakmeister/vim-togglecursor' " cursor shape
 NeoBundle 'vim-scripts/TaskList.vim' " tasklist
 NeoBundle 'kchmck/vim-coffee-script' " coffee
-NeoBundle 'toyamarinyon/vim-swift' " swift
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'gregsexton/MatchTag' " html tag
 NeoBundle 'matchit.zip'
+NeoBundle 'keith/swift.vim' " swift
 
 call neobundle#end()
 NeoBundleCheck
