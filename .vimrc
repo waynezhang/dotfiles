@@ -151,6 +151,13 @@ NeoBundle 'gregsexton/MatchTag' " html tag
 NeoBundle 'matchit.zip'
 NeoBundle 'keith/swift.vim' " swift
 
+NeoBundle 'nathanaelkane/vim-indent-guides'
+
+NeoBundle 'majutsushi/tagbar'
+map <Leader>b :TagbarToggle<cr>
+let g:indent_guides_auto_colors = 0
+hi IndentGuidesEven ctermbg=233
+
 call neobundle#end()
 NeoBundleCheck
 " NeoBundle end
