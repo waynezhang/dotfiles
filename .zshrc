@@ -11,13 +11,13 @@ source ~/.zsh/aliases.zsh
 source ~/.zsh/utils.zsh
 
 # highlighting
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 ZSH_HIGHLIGHT_PATTERNS+=('rm -rf [~/]*' 'fg=white,bold,bg=red')
 ZSH_HIGHLIGHT_STYLES[path]=''
 
 # history search
-source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+source /usr/local/opt/zsh-history-substring-search/zsh-history-substring-search.zsh
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 
@@ -39,10 +39,6 @@ if [[ `uname` == 'Darwin' ]]; then
 else
 . /usr/local/z.sh
 fi
-
-# zce
-source ~/.zsh/zce.zsh/zce.zsh
-bindkey "^Xz" zce
 
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
