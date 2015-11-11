@@ -47,3 +47,4 @@ source $(brew --prefix nvm)/nvm.sh
 [[ -s "$HOME/.zsh_custom.sh" ]] && . "$HOME/.zsh_custom.sh" ]]
 
 eval "$(rbenv init - zsh)"
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
