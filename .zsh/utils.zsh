@@ -16,7 +16,7 @@ function tree() {
 }
 
 function aastack() {
-  adb shell dumpsys activity activities | grep Hist
+  adb $* shell dumpsys activity activities | grep Hist
 }
 
 function pprov() {
