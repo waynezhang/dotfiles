@@ -45,6 +45,8 @@ zplug "LuRsT/hr", as:command
 zplug "b4b4r07/enhancd", use:init.sh
 ENHANCD_FILTER="fzf"
 
+zplug "cocoalabs/2fb7dc2199b0d4bf160364b8e557eb66", from:gist, as:plugin, use:gistfile1.txt
+
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
   if read -q; then
