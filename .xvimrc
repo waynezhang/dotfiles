@@ -1,3 +1,4 @@
 set ignorecase
 set hlsearch
 set number
+set clipboard=unnamed
