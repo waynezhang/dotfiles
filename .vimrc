@@ -16,6 +16,10 @@ let g:lightline = {
       \ }
 set laststatus=2
 
+"
+Plug 'skywind3000/asyncrun.vim'
+command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
+
 " motion
 Plug 'joequery/Stupid-EasyMotion'
 let g:mapleader = ","
@@ -29,8 +33,9 @@ Plug 'kien/ctrlp.vim'
 nnoremap <Leader>p :CtrlP<cr>
 
 " ack
-Plug 'rking/ag.vim'
-nnoremap <C-a> :Ag<space>
+" Plug 'rking/ag.vim'
+Plug 'nazo/pt.vim'
+nnoremap <C-a> :Pt<space>
 
 " run
 Plug 'thinca/vim-quickrun'
@@ -38,31 +43,28 @@ let g:quickrun_config = { }
 nmap <Leader>r :QuickRun<cr>
 
 " Clojure
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-Plug 'paredit.vim', { 'for': [ 'clojure', 'scheme' ]}
+" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+" Plug 'paredit.vim', { 'for': [ 'clojure', 'scheme' ]}
 
 " Javascript
-Plug 'othree/yajs.vim', { 'for': 'javascript' }
-let g:quickrun_config.javascript = { 'command': 'node', 'cmdopt': '--harmony'}
+" Plug 'othree/yajs.vim', { 'for': 'javascript' }
+" let g:quickrun_config.javascript = { 'command': 'node', 'cmdopt': '--harmony'}
 
 " grunt
 Plug 'AtsushiM/grunt-default.vim', { 'for': [ 'js', 'coffee' ] }
 let g:grunt_default_file = ['coffee']
 let g:grunt_default_makefile = 'Gruntfile.coffee'
 
-Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' } " markdown
 Plug 'godlygeek/tabular' " align
-Plug 'digitaltoad/vim-jade', { 'for': 'jade' } " jade
 Plug 'Shougo/vinarise' " hex
 Plug 'guns/xterm-color-table.vim' " color
 Plug 'jszakmeister/vim-togglecursor' " cursor shape
-Plug 'vim-scripts/TaskList.vim' " tasklist
-Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' } " coffee
-Plug 'scrooloose/syntastic'
 Plug 'gregsexton/MatchTag', { 'for': [ 'html', 'xml' ] } " html tag
 Plug 'matchit.zip'
-Plug 'keith/swift.vim', { 'for': 'swift' } " swift
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'sheerun/vim-polyglot'
+
+Plug 'w0rp/ale'
 
 Plug 'majutsushi/tagbar'
 map <Leader>b :TagbarToggle<cr>
@@ -98,6 +100,7 @@ set nobackup " no backup
 set nowritebackup
 set noswapfile
 set backspace=indent,eol,start " backspace fix
+set guifont=Iosevka\ Term:h12
 
 let filetype_m = 'objc' " file type fix
 
