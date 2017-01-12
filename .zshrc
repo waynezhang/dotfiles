@@ -1,15 +1,8 @@
 ################################
-# zplug
-################################
-
-export ZPLUG_HOME=/usr/local/opt/zplug
-source $ZPLUG_HOME/init.zsh
-
-################################
 # basic
 ################################
 
-fpath=(/usr/local/share/zsh-completions $fpath)
+fpath=(`brew --prefix zplug`/repos/zsh-users/zsh-completions $fpath)
 autoload -U compinit && compinit
 
 setopt no_beep
@@ -28,6 +21,10 @@ export LSCOLORS="gxfxcxdxbxegedabagacad"
 ################################
 # plugins
 ################################
+#
+export ZPLUG_HOME=/usr/local/opt/zplug
+unset ZPLUG_CLONE_DEPTH
+source $ZPLUG_HOME/init.zsh
 
 zplug "zsh-users/zsh-history-substring-search"
 bindkey -M emacs '^P' history-substring-search-up
@@ -37,13 +34,12 @@ zplug "rupa/z", use:z.sh
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-completions"
 zplug "Seinh/git-prune"
-zplug "plugins/npm", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
 zplug "rimraf/k"
 zplug "LuRsT/hr", as:command
 
-zplug "b4b4r07/enhancd", use:init.sh
-ENHANCD_FILTER="fzf"
+zplug "hchbaw/zce.zsh"
+bindkey "^Xz" zce
 
 zplug "cocoalabs/2fb7dc2199b0d4bf160364b8e557eb66", from:gist, as:plugin, use:gistfile1.txt
 
@@ -123,10 +119,18 @@ setopt hist_verify
 setopt share_history
 
 ################################
+# alias & functions
+################################
+
+function gfeature { git checkout -b feature/CORE-$1 }
+function gbug { git checkout -b bugfix/CORE-$1 }
+alias gu="git up"
+
+################################
 # path
 ################################
 
-export PATH=/usr/local/share/npm/bin:/usr/local/bin:/usr/local/sbin:/usr/libexec:~/Dropbox/utils/dex2jar:$PATH
+export PATH=/usr/local/share/npm/bin:/usr/local/bin:/usr/local/sbin:/usr/libexec:$PATH
 
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
@@ -134,4 +138,4 @@ source $(brew --prefix nvm)/nvm.sh
 eval "$(rbenv init - zsh)"
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[[ -s ~/.zsh_custom.sh ]] && . ~/.zsh_custom.sh
