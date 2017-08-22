@@ -33,9 +33,9 @@ Plug 'kien/ctrlp.vim'
 nnoremap <Leader>p :CtrlP<cr>
 
 " ack
-" Plug 'rking/ag.vim'
-Plug 'nazo/pt.vim'
-nnoremap <C-a> :Pt<space>
+Plug 'rking/ag.vim'
+" Plug 'nazo/pt.vim'
+nnoremap <C-a> :Ag<space>
 
 " run
 Plug 'thinca/vim-quickrun'
@@ -60,7 +60,7 @@ Plug 'Shougo/vinarise' " hex
 Plug 'guns/xterm-color-table.vim' " color
 Plug 'jszakmeister/vim-togglecursor' " cursor shape
 Plug 'gregsexton/MatchTag', { 'for': [ 'html', 'xml' ] } " html tag
-Plug 'matchit.zip'
+Plug 'vim-scripts/matchit.zip'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'sheerun/vim-polyglot'
 

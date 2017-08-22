@@ -87,7 +87,7 @@ function precmd {
 
   st=""
   if [[ -n $(git status -s --ignore-submodules=dirty -uno 2>/dev/null | tail -n 1) ]]; then
-    st=" "
+    st=" ✘"
   fi
 
   branch="$(current_branch)"
@@ -125,6 +125,8 @@ setopt share_history
 function gfeature { git checkout -b feature/CORE-$1 }
 function gbug { git checkout -b bugfix/CORE-$1 }
 alias gu="git up"
+alias vi="vim"
+setopt completealiases
 
 ################################
 # path
