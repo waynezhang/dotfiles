@@ -1,44 +1,44 @@
 -- utilities
 
 function resizeAndMove(dx, dy, dw, dh)
-	return function()
-		local win = hs.window.focusedWindow()
-		local f = win:frame()
-		local screen = win:screen()
-		local max = screen:frame()
+  return function()
+    local win = hs.window.focusedWindow()
+    local f = win:frame()
+    local screen = win:screen()
+    local max = screen:frame()
 
-		f.x = max.w * dx
-		f.y = max.h * dy
-		f.w = max.w * dw
-		f.h = max.h * dh
-		win:setFrame(f)
-	end
+    f.x = max.w * dx
+    f.y = max.h * dy
+    f.w = max.w * dw
+    f.h = max.h * dh
+    win:setFrame(f)
+  end
 end
 
 function resize(dw, dh)
-	return function()
-		local win = hs.window.focusedWindow()
-		local f = win:frame()
-		local screen = win:screen()
-		local max = screen:frame()
+  return function()
+    local win = hs.window.focusedWindow()
+    local f = win:frame()
+    local screen = win:screen()
+    local max = screen:frame()
 
-		f.w = f.w * dw
-		f.h = f.h * dh
-		win:setFrame(f)
-	end
+    f.w = f.w * dw
+    f.h = f.h * dh
+    win:setFrame(f)
+  end
 end
 
 function move(dx, dy)
-	return function()
-		local win = hs.window.focusedWindow()
-		local f = win:frame()
-		local screen = win:screen()
-		local max = screen:frame()
+  return function()
+    local win = hs.window.focusedWindow()
+    local f = win:frame()
+    local screen = win:screen()
+    local max = screen:frame()
 
-		f.x = f.x + f.w * dx
-		f.y = f.y + f.h * dy
-		win:setFrame(f)
-	end
+    f.x = f.x + f.w * dx
+    f.y = f.y + f.h * dy
+    win:setFrame(f)
+  end
 end
 
 -- disable animation
@@ -64,20 +64,20 @@ hs.hotkey.bind({ "shift", "alt" }, "down", move(0, 0.1))
 
 -- window counterpart
 hs.hotkey.bind({"alt"}, "Tab", function()
-	local app = hs.application.frontmostApplication()
-	local windows = app:allWindows()
-	
-	local nextWin = nil
-	
-	if app:bundleID() == "com.apple.finder" then
-		nextWin = windows[#windows - 1]
-	else
-		nextWin = windows[#windows]
-	end
+  local app = hs.application.frontmostApplication()
+  local windows = app:allWindows()
 
-	if nextWin:isMinimized() == true then
-		nextWin:unminimize()
-	else
-		nextWin:focus()
-	end
+  local nextWin = nil
+
+  if app:bundleID() == "com.apple.finder" then
+    nextWin = windows[#windows - 1]
+  else
+    nextWin = windows[#windows]
+  end
+
+  if nextWin:isMinimized() == true then
+    nextWin:unminimize()
+  else
+    nextWin:focus()
+  end
 end)
