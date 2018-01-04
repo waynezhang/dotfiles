@@ -81,3 +81,9 @@ hs.hotkey.bind({"alt"}, "Tab", function()
     nextWin:focus()
   end
 end)
+
+-- Wi-Fi in Starbucks is tooooo unstable
+hs.hotkey.bind({"cmd", "ctrl"}, "-", function()
+  hs.wifi.setPower(false)
+  hs.wifi.setPower(true)
+end)
