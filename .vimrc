@@ -102,7 +102,12 @@ set noswapfile
 set backspace=indent,eol,start " backspace fix
 set guifont=Iosevka\ Term:h12
 
-let filetype_m = 'objc' " file type fix
+" objective-c file type fix
+let filetype_m = 'objc'
+
+" shell syntax fix
+au FileType sh let b:is_bash=1
+au FileType sh syntax on
 
 " system clipboard
 if has ('unnamedplus')
