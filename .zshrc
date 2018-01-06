@@ -141,3 +141,9 @@ eval "$(rbenv init - zsh)"
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 [[ -s ~/.zsh_custom.sh ]] && . ~/.zsh_custom.sh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/wayne/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/wayne/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/wayne/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/wayne/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
