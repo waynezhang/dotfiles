@@ -113,3 +113,16 @@ end)
 hs.hotkey.bind({"cmd", "alt"}, "space", function()
   hs.spotify.playpause()
 end)
+
+
+-- Wi-Fi SSID
+local wifiMenu = hs.menubar.new()
+wifiMenu:setTitle(hs.wifi.currentNetwork())
+hs.wifi.watcher.new(function()
+  local wifiName = hs.wifi.currentNetwork()
+  if wifiName then
+    wifiMenu:setTitle(wifiName)
+  else
+    wifiMenu:setTitle("Wifi OFF")
+  end
+end):start()
