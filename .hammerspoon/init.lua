@@ -87,3 +87,9 @@ hs.hotkey.bind({"cmd", "ctrl"}, "-", function()
   hs.wifi.setPower(false)
   hs.wifi.setPower(true)
 end)
+
+
+-- Input Method Switch
+hs.hotkey.bind({"cmd"}, "kana", function()
+  hs.keycodes.currentSourceID("com.apple.inputmethod.SCIM.ITABC")
+end)
