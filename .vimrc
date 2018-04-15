@@ -29,18 +29,22 @@ Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 
 " File finder
-Plug 'kien/ctrlp.vim'
-nnoremap <Leader>p :CtrlP<cr>
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+nnoremap <C-p> :FZF<cr>
 
 " ack
-Plug 'rking/ag.vim'
-" Plug 'nazo/pt.vim'
-nnoremap <C-a> :Ag<space>
+Plug 'mileszs/ack.vim'
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+nnoremap <C-a> :Ack!<space>
 
 " run
 Plug 'thinca/vim-quickrun'
 let g:quickrun_config = { }
 nmap <Leader>r :QuickRun<cr>
+
+Plug 'tpope/vim-unimpaired'
 
 " Clojure
 " Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
@@ -80,7 +84,9 @@ set shiftwidth=2
 set nu
 set wildmenu
 set magic
-set showmatch
+if !has('nvim')
+  set showmatch
+endif
 set encoding=utf-8
 set expandtab
 set autoindent
@@ -95,15 +101,15 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-set vb " no bell
+set novb " no bell
 set nobackup " no backup
 set nowritebackup
 set noswapfile
 set backspace=indent,eol,start " backspace fix
-set guifont=Iosevka\ Term:h12
 
-" objective-c file type fix
+" file type fix
 let filetype_m = 'objc'
+let g:jsx_ext_required = 1
 
 " shell syntax fix
 au FileType sh let b:is_bash=1
