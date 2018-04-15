@@ -2,7 +2,7 @@
 # basic
 ################################
 
-fpath=(`brew --prefix zplug`/repos/zsh-users/zsh-completions $fpath)
+fpath=(`brew --prefix zsh`/share/zsh/functions `brew --prefix zplug`/repos/zsh-users/zsh-completions $fpath)
 autoload -U compinit && compinit
 
 setopt no_beep
@@ -21,7 +21,7 @@ export LSCOLORS="gxfxcxdxbxegedabagacad"
 ################################
 # plugins
 ################################
-#
+
 export ZPLUG_HOME=/usr/local/opt/zplug
 unset ZPLUG_CLONE_DEPTH
 source $ZPLUG_HOME/init.zsh
@@ -35,11 +35,7 @@ zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-completions"
 zplug "Seinh/git-prune"
 zplug "plugins/git", from:oh-my-zsh
-zplug "rimraf/k"
 zplug "LuRsT/hr", as:command
-
-zplug "hchbaw/zce.zsh"
-bindkey "^Xz" zce
 
 zplug "cocoalabs/2fb7dc2199b0d4bf160364b8e557eb66", from:gist, as:plugin, use:gistfile1.txt
 
@@ -122,8 +118,6 @@ setopt share_history
 # alias & functions
 ################################
 
-function gfeature { git checkout -b feature/CORE-$1 }
-function gbug { git checkout -b bugfix/CORE-$1 }
 alias gu="git up"
 alias vi="vim"
 setopt completealiases
@@ -132,18 +126,25 @@ setopt completealiases
 # path
 ################################
 
-export PATH=/usr/local/share/npm/bin:/usr/local/bin:/usr/local/sbin:/usr/libexec:$PATH
+export PATH=/usr/local/share/npm/bin:/usr/local/bin:/usr/local/sbin:/usr/libexec:~/go/bin:$PATH
 
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+################################
+# nvm, rbenv, etc
+################################
+
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
 
 eval "$(rbenv init - zsh)"
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
+################################
+# Google Cloud SDK
+#################################
+
+GCPSDKPATH="/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk"
+if [ -f "$GCPSDKPATH/google-cloud-sdk/path.zsh.inc" ]; then source "$GCPSDKPATH/path.zsh.inc"; fi
+if [ -f "$GCPSDKPATH/google-cloud-sdk/completion.zsh.inc" ]; then source "$GCPSDKPATH/completion.zsh.inc"; fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [[ -s ~/.zsh_custom.sh ]] && . ~/.zsh_custom.sh
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/wayne/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/wayne/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/wayne/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/wayne/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
