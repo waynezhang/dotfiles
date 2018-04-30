@@ -126,6 +126,8 @@ alias gu="git up"
 alias vi="vim"
 setopt completealiases
 
+function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
+
 ################################
 # path
 ################################
