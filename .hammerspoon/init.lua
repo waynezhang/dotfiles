@@ -118,3 +118,4 @@ hs.hotkey.bind({"cmd", "alt"}, "space", function()
   hs.spotify.playpause()
 end)
 
+require "sands"
