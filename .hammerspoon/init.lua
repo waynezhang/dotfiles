@@ -7,7 +7,7 @@ function resizeAndMove(dx, dy, dw, dh)
     local screen = win:screen()
     local max = screen:fullFrame()
 
-    f.x = max.w * dx
+    f.x = max.x + max.w * dx
     f.y = max.h * dy
     f.w = max.w * dw
     f.h = max.h * dh
