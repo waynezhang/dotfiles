@@ -5,7 +5,7 @@ function resizeAndMove(dx, dy, dw, dh)
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
-    local max = screen:frame()
+    local max = screen:fullFrame()
 
     f.x = max.w * dx
     f.y = max.h * dy
@@ -20,7 +20,7 @@ function resize(dw, dh)
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
-    local max = screen:frame()
+    local max = screen:fullFrame()
 
     f.w = f.w * dw
     f.h = f.h * dh
@@ -33,7 +33,7 @@ function move(dx, dy)
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
-    local max = screen:frame()
+    local max = screen:fullFrame()
 
     f.x = f.x + f.w * dx
     f.y = f.y + f.h * dy
