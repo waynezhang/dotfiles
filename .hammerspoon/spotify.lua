@@ -1,0 +1,23 @@
+-- Spotify
+function showCurrentSpotifyTrack()
+  local track = hs.spotify.getCurrentTrack()
+  local artist = hs.spotify.getCurrentArtist()
+  local album = hs.spotify.getCurrentAlbum()
+  hs.notify.show(track, artist, album)
+end
+hs.hotkey.bind({ "cmd", "alt" }, "right", function()
+  hs.spotify.next()
+  hs.timer.doAfter(0.1, function()
+    showCurrentSpotifyTrack()
+  end)
+end)
+hs.hotkey.bind({ "cmd", "alt" }, "left", function()
+  hs.spotify.previous()
+  hs.timer.doAfter(0.1, function()
+    showCurrentSpotifyTrack()
+  end)
+end)
+
+hs.hotkey.bind({ "cmd", "alt" }, "space", function()
+  hs.spotify.playpause()
+end)
