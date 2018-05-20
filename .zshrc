@@ -142,11 +142,8 @@ function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 export PATH=/usr/local/share/npm/bin:/usr/local/bin:/usr/local/sbin:/usr/libexec:~/go/bin:$PATH
 
 ################################
-# nvm, rbenv, etc
+# rbenv, etc
 ################################
-
-export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
 
 eval "$(rbenv init - zsh)"
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
