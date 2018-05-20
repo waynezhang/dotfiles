@@ -124,6 +124,13 @@ setopt share_history
 
 alias gu="git up"
 alias vi="vim"
+
+# files
+alias -s zip="unzip"
+alias -s gz="tar -zxvf"
+alias -s tgz="tar -zxvf"
+alias -s bz2="tar -jxvf"
+
 setopt completealiases
 
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
