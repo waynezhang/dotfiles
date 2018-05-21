@@ -6,7 +6,8 @@ export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-fpath=(`brew --prefix zsh`/share/zsh/functions `brew --prefix zplug`/repos/zsh-users/zsh-completions $fpath)
+BREW_PREFIX="/usr/local/opt"
+fpath=("$BREW_PREFIX"/zsh/share/zsh/functions "$BREW_PREFIX"/zplug/repos/zsh-users/zsh-completions $fpath)
 autoload -U compinit && compinit
 
 setopt no_beep
@@ -37,9 +38,7 @@ bindkey -M emacs '^N' history-substring-search-down
 zplug "rupa/z", use:z.sh
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-completions"
-zplug "Seinh/git-prune"
 zplug "plugins/git", from:oh-my-zsh
-zplug "LuRsT/hr", as:command
 
 zplug "cocoalabs/2fb7dc2199b0d4bf160364b8e557eb66", from:gist, as:plugin, use:gistfile1.txt
 
