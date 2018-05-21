@@ -35,7 +35,9 @@ zplug "zsh-users/zsh-history-substring-search"
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 
+zplug "changyuheng/fz", defer:1
 zplug "rupa/z", use:z.sh
+
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-completions"
 zplug "plugins/git", from:oh-my-zsh
