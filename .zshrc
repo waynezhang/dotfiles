@@ -23,7 +23,7 @@ export LSCOLORS="gxfxcxdxbxegedabagacad"
 # plugins
 ################################
 
-source '/Users/01012995/.zplugin/bin/zplugin.zsh'
+source "$HOME/.zplugin/bin/zplugin.zsh"
 
 zplugin snippet OMZ::lib/git.zsh
 zplugin ice svn; zplugin snippet OMZ::plugins/git 
