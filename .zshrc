@@ -27,37 +27,26 @@ export LSCOLORS="gxfxcxdxbxegedabagacad"
 # plugins
 ################################
 
-export ZPLUG_HOME=/usr/local/opt/zplug
-unset ZPLUG_CLONE_DEPTH
-source $ZPLUG_HOME/init.zsh
+source '/Users/01012995/.zplugin/bin/zplugin.zsh'
 
-zplug "zsh-users/zsh-history-substring-search"
+zplugin light zsh-users/zsh-history-substring-search
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 
-zplug "changyuheng/fz", defer:1
-zplug "rupa/z", use:z.sh
+zplugin light changyuheng/fz
+zplugin light rupa/z
 
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "zsh-users/zsh-completions"
-zplug "plugins/git", from:oh-my-zsh
-
-zplug "cocoalabs/2fb7dc2199b0d4bf160364b8e557eb66", from:gist, as:plugin, use:gistfile1.txt
-
-if ! zplug check --verbose; then
-  printf "Install? [y/N]: "
-  if read -q; then
-    echo; zplug install
-  else
-    echo
-  fi
-fi
-zplug load
-
-# highlight
+zplugin light zsh-users/zsh-syntax-highlighting
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 ZSH_HIGHLIGHT_PATTERNS+=('rm -rf [~/]*' 'fg=white,bold,bg=red')
 ZSH_HIGHLIGHT_STYLES[path]=''
+
+zplugin light zsh-users/zsh-completions
+zplugin snippet OMZ::lib/git.zsh
+zplugin ice svn; zplugin snippet OMZ::plugins/git 
+
+autoload -Uz _zplugin
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
 
 ################################
 # completion
