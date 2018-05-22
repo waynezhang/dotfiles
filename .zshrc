@@ -29,17 +29,18 @@ export LSCOLORS="gxfxcxdxbxegedabagacad"
 
 source '/Users/01012995/.zplugin/bin/zplugin.zsh'
 
-zplugin light zsh-users/zsh-history-substring-search
+zplugin snippet OMZ::lib/git.zsh
+zplugin ice svn; zplugin snippet OMZ::plugins/git 
+
+zplugin ice silent wait'!0'; zplugin light zsh-users/zsh-history-substring-search
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 
-zplugin light changyuheng/fz
-zplugin light rupa/z
-zplugin light zdharma/fast-syntax-highlighting
-zplugin light zsh-users/zsh-completions
-zplugin snippet OMZ::lib/git.zsh
-zplugin ice svn; zplugin snippet OMZ::plugins/git 
-zplugin ice svn; zplugin snippet OMZ::plugins/colored-man-pages
+zplugin ice silent wait'!0'; zplugin light changyuheng/fz
+zplugin ice silent wait'!0'; zplugin light rupa/z
+zplugin ice silent wait'!0'; zplugin light zdharma/fast-syntax-highlighting
+zplugin ice silent wait'!0'; zplugin light zsh-users/zsh-completions
+zplugin ice svn silent wait'!0'; zplugin snippet OMZ::plugins/colored-man-pages
 
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
