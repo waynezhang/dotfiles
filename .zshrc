@@ -6,10 +6,6 @@ export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-BREW_PREFIX="/usr/local/opt"
-fpath=("$BREW_PREFIX"/zsh/share/zsh/functions "$BREW_PREFIX"/zplug/repos/zsh-users/zsh-completions $fpath)
-autoload -U compinit && compinit
-
 setopt no_beep
 setopt pushd_ignore_dups
 setopt extended_glob
@@ -64,6 +60,10 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*:default' list-prompt '%S%M matches%s'
 zstyle ':completion:*:*:*:*:processes' command 'ps -u $USER -o pid,user,comm -w'
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;36=0=01'
+
+BREW_PREFIX="/usr/local/opt"
+fpath=("$BREW_PREFIX"/zsh/share/zsh/functions $fpath)
+autoload -U compinit && compinit
 
 ################################
 # prompt
