@@ -35,12 +35,7 @@ bindkey -M emacs '^N' history-substring-search-down
 
 zplugin light changyuheng/fz
 zplugin light rupa/z
-
-zplugin light zsh-users/zsh-syntax-highlighting
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-ZSH_HIGHLIGHT_PATTERNS+=('rm -rf [~/]*' 'fg=white,bold,bg=red')
-ZSH_HIGHLIGHT_STYLES[path]=''
-
+zplugin light zdharma/fast-syntax-highlighting
 zplugin light zsh-users/zsh-completions
 zplugin snippet OMZ::lib/git.zsh
 zplugin ice svn; zplugin snippet OMZ::plugins/git 
