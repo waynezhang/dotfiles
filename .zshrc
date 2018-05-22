@@ -44,6 +44,7 @@ ZSH_HIGHLIGHT_STYLES[path]=''
 zplugin light zsh-users/zsh-completions
 zplugin snippet OMZ::lib/git.zsh
 zplugin ice svn; zplugin snippet OMZ::plugins/git 
+zplugin ice svn; zplugin snippet OMZ::plugins/colored-man-pages
 
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
