@@ -38,9 +38,15 @@ bindkey -M emacs '^N' history-substring-search-down
 
 zplugin ice silent wait'!0'; zplugin light changyuheng/fz
 zplugin ice silent wait'!0'; zplugin light rupa/z
-zplugin ice silent wait'!0'; zplugin light zdharma/fast-syntax-highlighting
 zplugin ice silent wait'!0'; zplugin light zsh-users/zsh-completions
 zplugin ice svn silent wait'!0'; zplugin snippet OMZ::plugins/colored-man-pages
+
+function zsh_highlight_setup {
+  ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+  ZSH_HIGHLIGHT_PATTERNS+=('rm -rf [~/]*' 'fg=white,bold,bg=red')
+  ZSH_HIGHLIGHT_STYLES[path]=''
+}
+zplugin ice silent wait'!0' atload'zsh_highlight_setup'; zplugin light zsh-users/zsh-syntax-highlighting
 
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
