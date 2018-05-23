@@ -1,0 +1,43 @@
+tap "caskroom/cask"
+tap "mscharley/homebrew"
+brew "carthage"
+brew "cloc"
+brew "fzf"
+brew "git"
+brew "go"
+brew "jq"
+brew "mas"
+brew "mitmproxy"
+brew "mosh"
+brew "n"
+brew "nmap"
+brew "pyenv"
+brew "rbenv"
+brew "reattach-to-user-namespace"
+brew "rlwrap"
+brew "socat"
+brew "sshpass"
+brew "swiftlint"
+brew "the_silver_searcher"
+brew "tmux"
+brew "vim"
+brew "zsh"
+brew "mscharley/homebrew/alacritty", args: ["HEAD"]
+cask "betterzipql"
+cask "provisionql"
+cask "qlcolorcode"
+cask "qlimagesize"
+cask "qlmarkdown"
+cask "qlprettypatch"
+cask "qlstephen"
+cask "quicklook-csv"
+cask "quicklook-json"
+mas "Apple Configurator 2", id: 1037126344
+mas "Bear", id: 1091189122
+mas "Pages", id: 409201541
+mas "Pixelmator", id: 407963104
+mas "Reeder", id: 880001334
+mas "Slack", id: 803453959
+mas "Things3", id: 904280696
+mas "Tweetbot", id: 557168941
+mas "Xcode", id: 497799835
