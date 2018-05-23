@@ -113,8 +113,8 @@ defaults write com.apple.dock tilesize -int 24
 # Put Dock to the left
 defaults write com.apple.dock orientation left 
 
-# Show only open applications in the Dock
-defaults write com.apple.dock static-only -bool true
+# Wipe all (default) app icons from the Dock
+defaults write com.apple.dock persistent-apps -array
 
 # Remove the auto-hiding Dock delay
 defaults write com.apple.dock autohide-delay -float 0
