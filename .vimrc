@@ -44,36 +44,12 @@ Plug 'thinca/vim-quickrun'
 let g:quickrun_config = { }
 nmap <Leader>r :QuickRun<cr>
 
-Plug 'tpope/vim-unimpaired'
-
-" Clojure
-" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-" Plug 'paredit.vim', { 'for': [ 'clojure', 'scheme' ]}
-
-" Javascript
-" Plug 'othree/yajs.vim', { 'for': 'javascript' }
-" let g:quickrun_config.javascript = { 'command': 'node', 'cmdopt': '--harmony'}
-
-" grunt
-Plug 'AtsushiM/grunt-default.vim', { 'for': [ 'js', 'coffee' ] }
-let g:grunt_default_file = ['coffee']
-let g:grunt_default_makefile = 'Gruntfile.coffee'
-
-Plug 'godlygeek/tabular' " align
-Plug 'Shougo/vinarise' " hex
 Plug 'guns/xterm-color-table.vim' " color
-Plug 'jszakmeister/vim-togglecursor' " cursor shape
 Plug 'gregsexton/MatchTag', { 'for': [ 'html', 'xml' ] } " html tag
-Plug 'vim-scripts/matchit.zip'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'sheerun/vim-polyglot'
-
-Plug 'w0rp/ale'
-
-Plug 'majutsushi/tagbar'
-map <Leader>b :TagbarToggle<cr>
-let g:indent_guides_auto_colors = 0
-hi IndentGuidesEven ctermbg=233
+Plug 'vim-scripts/matchit.zip' " % match
+Plug 'sheerun/vim-polyglot' " language pack
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh  --clang-completer --go-completer --js-completer' } " completion
+Plug 'w0rp/ale' " lint
 
 call plug#end()
 
