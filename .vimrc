@@ -48,7 +48,12 @@ Plug 'guns/xterm-color-table.vim' " color
 Plug 'gregsexton/MatchTag', { 'for': [ 'html', 'xml' ] } " html tag
 Plug 'vim-scripts/matchit.zip' " % match
 Plug 'sheerun/vim-polyglot' " language pack
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+au FileType go set listchars=tab:\ \ 
+
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh  --clang-completer --go-completer --js-completer' } " completion
+set completeopt-=preview
+
 Plug 'w0rp/ale' " lint
 
 call plug#end()
