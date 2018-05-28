@@ -1,5 +1,6 @@
 require "window"
 require "spotify"
+require "remap"
 
 -- disable animation
 hs.window.animationDuration = 0
