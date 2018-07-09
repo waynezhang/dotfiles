@@ -90,6 +90,7 @@ set backspace=indent,eol,start " backspace fix
 
 " file type fix
 let filetype_m = 'objc'
+au FileType objc set shiftwidth=4
 let g:jsx_ext_required = 1
 
 " shell syntax fix
