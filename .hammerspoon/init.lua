@@ -1,6 +1,6 @@
 require "window"
 require "spotify"
-require "remap"
+require "keybindings"
 
 -- disable animation
 hs.window.animationDuration = 0
