@@ -1,6 +1,5 @@
 require "window"
 require "spotify"
-require "keybindings"
 
 -- disable animation
 hs.window.animationDuration = 0
