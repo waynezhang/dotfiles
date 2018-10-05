@@ -135,13 +135,6 @@ function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 export PATH=/usr/local/share/npm/bin:/usr/local/bin:/usr/local/sbin:/usr/libexec:~/go/bin:$PATH
 
 ################################
-# rbenv, etc
-################################
-
-eval "$(rbenv init - zsh)"
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-
-################################
 # Google Cloud SDK
 #################################
 
@@ -151,3 +144,6 @@ if [ -f "$GCPSDKPATH/google-cloud-sdk/completion.zsh.inc" ]; then source "$GCPSD
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [[ -s ~/.zsh_custom.sh ]] && . ~/.zsh_custom.sh
+
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
