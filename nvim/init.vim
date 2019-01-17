@@ -1,4 +1,4 @@
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 " status line
 Plug 'itchyny/lightline.vim'
@@ -33,11 +33,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 nnoremap <C-p> :FZF<cr>
 
 " ack
-Plug 'mileszs/ack.vim'
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
-nnoremap <C-a> :Ack!<space>
+Plug 'jremmen/vim-ripgrep'
+nnoremap <C-a> :Rg<space>
 
 " run
 Plug 'thinca/vim-quickrun'
