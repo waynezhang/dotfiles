@@ -1,5 +1,4 @@
 require "window"
-require "spotify"
 
 -- disable animation
 hs.window.animationDuration = 0
