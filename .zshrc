@@ -116,7 +116,8 @@ setopt share_history
 ################################
 
 alias gu="git up"
-alias vi="vim"
+alias vi="nvim"
+alias vim="nvim"
 
 # files
 alias -s zip="unzip"
@@ -145,5 +146,5 @@ if [ -f "$GCPSDKPATH/google-cloud-sdk/completion.zsh.inc" ]; then source "$GCPSD
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [[ -s ~/.zsh_custom.sh ]] && . ~/.zsh_custom.sh
 
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+. /usr/local/opt/asdf/asdf.sh
+. /usr/local/etc/bash_completion.d/asdf.bash
