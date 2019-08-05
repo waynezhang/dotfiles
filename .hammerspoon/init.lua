@@ -1,4 +1,5 @@
 require "window"
+require "viKeys"
 
 -- disable animation
 hs.window.animationDuration = 0
