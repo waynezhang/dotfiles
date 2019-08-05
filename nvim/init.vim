@@ -6,7 +6,7 @@ let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'filename', 'modified', 'fugitive' ] ]
+      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component': {
       \   'readonly': '%{&readonly ? "x" : ""}',
@@ -38,17 +38,16 @@ nnoremap <C-a> :Rg<space>
 
 " run
 Plug 'thinca/vim-quickrun'
-let g:quickrun_config = { }
 nmap <Leader>r :QuickRun<cr>
 
 Plug 'guns/xterm-color-table.vim' " color
 Plug 'gregsexton/MatchTag', { 'for': [ 'html', 'xml' ] } " html tag
 Plug 'vim-scripts/matchit.zip' " % match
 Plug 'sheerun/vim-polyglot' " language pack
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-au FileType go set listchars=tab:\ \ 
 
 Plug 'w0rp/ale' " lint
+
+Plug 'nanotech/jellybeans.vim', { 'as': 'jellybeans' }
 
 call plug#end()
 
@@ -81,6 +80,7 @@ set nobackup " no backup
 set nowritebackup
 set noswapfile
 set backspace=indent,eol,start " backspace fix
+set inccommand=nosplit
 
 " file type fix
 let filetype_m = 'objc'
@@ -98,7 +98,7 @@ else
   set clipboard=unnamed
 endif
 
-colorscheme desert
+colorscheme jellybeans
 se cursorline
 hi CursorLine cterm=none ctermbg=236
 highlight SignColumn ctermbg=black
