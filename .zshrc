@@ -73,6 +73,8 @@ setopt PROMPT_SUBST
 autoload -U colors && colors
 
 function precmd {
+  local last_return_code=$?
+
   color=$fg[red]
   if [[ $? -eq 0 ]]; then
     color=$fg[gray]
@@ -88,10 +90,15 @@ function precmd {
     branch=" $branch"
   fi
 
-  PROMPT='%{$fg[cyan]%}%m %c%{$reset_color%}%{$fg[red]%}${branch}%{$reset_color%}%{$fg[yellow]%}${st}%{$reset_color%} %(!.#.→) '
-  RPROMPT=' → %{$color%}$?%{$reset_color%}'
+  PROMPT='%{$fg[cyan]%}%m %c%{$reset_color%}%{$fg[red]%}${branch}%{$reset_color%}%{$fg[yellow]%}${st}%{$reset_color%}'
   if [ $#jobstates -ne 0 ]; then
-    RPROMPT="%{$fg[green]%}%j%{$reset_color%}${RPROMPT}"
+    PROMPT="${PROMPT} (%{$fg[green]%}%j%{$reset_color%})"
+  fi
+  PROMPT="${PROMPT} %(!.#.→) "
+
+  RPROMPT=''
+  if [ $last_return_code -ne 0 ]; then
+    RPROMPT="→ %{$fg[red]%}$last_return_code%{$reset_color%}"
   fi
 }
 
@@ -117,6 +124,8 @@ setopt share_history
 
 alias gu="git-up"
 alias gbda='git branch --no-color --merged | command grep -vE "^(\*|\s*(master|QA|QA-mid)\s*$)" | command xargs -n 1 git branch -d'
+alias gl='git pull upstream "$(current_branch)"'
+alias ga='gu && gl'
 
 alias vi="nvim"
 alias vim="nvim"
@@ -148,7 +157,14 @@ if [ -f "$GCPSDKPATH/google-cloud-sdk/path.zsh.inc" ]; then source "$GCPSDKPATH/
 if [ -f "$GCPSDKPATH/google-cloud-sdk/completion.zsh.inc" ]; then source "$GCPSDKPATH/completion.zsh.inc"; fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git --color=always'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS="--ansi"
+export FZF_ALT_C_COMMAND='fd --type directory --color=always'
+
 [[ -s ~/.zsh_custom.sh ]] && . ~/.zsh_custom.sh
 
-. /usr/local/opt/asdf/asdf.sh
-. /usr/local/etc/bash_completion.d/asdf.bash
+eval "$(pyenv init -)"
+eval "$(rbenv init -)"
+
+export HOMEBREW_NO_AUTO_UPDATE=1

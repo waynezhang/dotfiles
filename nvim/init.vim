@@ -34,7 +34,7 @@ nnoremap <C-p> :FZF<cr>
 
 " ack
 Plug 'jremmen/vim-ripgrep'
-nnoremap <C-a> :Rg<space>
+nnoremap <C-e> :Rg<space>
 
 " run
 Plug 'thinca/vim-quickrun'
@@ -49,6 +49,15 @@ Plug 'w0rp/ale' " lint
 
 Plug 'nanotech/jellybeans.vim', { 'as': 'jellybeans' }
 
+Plug 'nathanaelkane/vim-indent-guides'
+let g:indent_guides_enable_on_vim_startup = 1
+
+Plug 'terryma/vim-expand-region'
+
+Plug 'ianding1/leetcode.vim'
+let g:leetcode_solution_filetype='javascript'
+let g:leetcode_username="linghua.zhang@me.com"
+
 call plug#end()
 
 filetype plugin indent on
@@ -57,6 +66,7 @@ set tabstop=2
 set shiftwidth=2
 set nu
 set wildmenu
+set wildignorecase
 set magic
 if !has('nvim')
   set showmatch
@@ -73,6 +83,7 @@ set showbreak=↪
 set scrolloff=3 " minimal lines below cursor
 set hlsearch
 set incsearch
+set inccommand=split
 set ignorecase
 set smartcase
 set novb " no bell
