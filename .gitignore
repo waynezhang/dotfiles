@@ -1,4 +1,1 @@
-.lein/self-installs
-nvim/.netrwhist
-nvim/autoload/
-nvim/plugged/
+**/nvim/plugged/
