@@ -81,7 +81,7 @@ function precmd {
   fi
 
   st=""
-  if [[ -n $(git status -s --ignore-submodules=dirty -uno 2>/dev/null | tail -n 1) ]]; then
+  if [[ -n $(/usr/bin/git status -s --ignore-submodules=dirty -uno 2>/dev/null | tail -n 1) ]]; then
     st=" ✘"
   fi
 

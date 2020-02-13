@@ -1,4 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
-let g:netrw_dirhist_2='/Users/JP22877/Projects/line-dev/build/output/2019.1112.2103'
-let g:netrw_dirhist_1='/Users/JP22877/Projects/line-dev/.git'
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/Users/JP22877/Projects/line-ios/Externals'
+let g:netrw_dirhist_6='/Users/JP22877/Projects/line-ios/Externals/LEGY'
+let g:netrw_dirhist_5='/Users/JP22877/Projects/line-dev/Externals/applovin-ios-sdk'
+let g:netrw_dirhist_4='/Users/JP22877/Projects/line-ios/XcodeGen'
+let g:netrw_dirhist_3='/Users/JP22877/Projects/line-dev/LineSocialGraph/Proxy'
+let g:netrw_dirhist_2='/Users/JP22877/Projects/line-dev/LineSocialGraph'
+let g:netrw_dirhist_1='/Users/JP22877/Projects/line-dev'
+let g:netrw_dirhist_0='/Users/JP22877/Projects/line-dev/LineSocialGraph'
+let g:netrw_dirhist_9='/Users/JP22877/Projects/line-dev/Externals/line-ios-voip'
+let g:netrw_dirhist_8='/Users/JP22877/Projects'
