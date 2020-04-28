@@ -15,7 +15,6 @@ COMP_WORDBREAKS=${COMP_WORDBREAKS/@/}
 export COMP_WORDBREAKS
 export WORDCHARS=''
 export GIT_EDITOR="vim"
-export TERM=xterm-256color
 export CLICOLOR=1
 export LSCOLORS="gxfxcxdxbxegedabagacad"
 
@@ -164,7 +163,6 @@ export FZF_ALT_C_COMMAND='fd --type directory --color=always'
 
 [[ -s ~/.zsh_custom.sh ]] && . ~/.zsh_custom.sh
 
-eval "$(pyenv init -)"
 eval "$(rbenv init -)"
 
 export HOMEBREW_NO_AUTO_UPDATE=1

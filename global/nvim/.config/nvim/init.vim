@@ -26,6 +26,21 @@ set laststatus=2
 Plug 'skywind3000/asyncrun.vim'
 command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 
+" lsp
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+if executable('sourcekit-lsp')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'sourcekit-lsp',
+        \ 'cmd': {server_info->['sourcekit-lsp']},
+        \ 'whitelist': ['swift'],
+        \ })
+endif
+autocmd FileType swift nnoremap <C-]> :LspDefinition<CR>
+autocmd FileType swift setlocal omnifunc=lsp#complete
+
+Plug 'prabirshrestha/asyncomplete.vim'
+
 " motion
 Plug 'joequery/Stupid-EasyMotion'
 let g:mapleader = ","
