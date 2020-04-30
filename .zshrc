@@ -172,27 +172,3 @@ export FZF_ALT_C_COMMAND='fd --type directory --color=always'
 eval "$(rbenv init -)"
 
 export HOMEBREW_NO_AUTO_UPDATE=1
-### End of Zinit's installer chunk
-### End of Zinit's installer chunk
-### End of Zinit's installer chunk
-### End of Zinit's installer chunk
-### End of Zinit's installer chunk
-### End of Zinit's installer chunk
-### End of Zinit's installer chunk
-### End of Zinit's installer chunk
-### End of Zinit's installer chunk
-### End of Zinit's installer chunk
-### End of Zinit's installer chunk
-### End of Zinit's installer chunk
-### End of Zinit's installer chunk
-### End of Zinit's installer chunk
-### End of Zinit's installer chunk
-### End of Zinit's installer chunk
-### End of Zinit's installer chunk
-### End of Zinit's installer chunk
-### End of Zinit's installer chunk
-### End of Zinit's installer chunk
-### End of Zinit's installer chunk
-### End of Zinit's installer chunk
-### End of Zinit's installer chunk
-### End of Zinit's installer chunk
