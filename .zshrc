@@ -23,7 +23,7 @@ export GPG_TTY=$(tty)
 # plugins
 ################################
 
-source "$HOME/.zplugin/bin/zplugin.zsh"
+source "$HOME/.zinit/bin/zplugin.zsh"
 
 zplugin snippet OMZ::lib/git.zsh
 zplugin ice svn; zplugin snippet OMZ::plugins/git 
@@ -172,3 +172,25 @@ export FZF_ALT_C_COMMAND='fd --type directory --color=always'
 eval "$(rbenv init -)"
 
 export HOMEBREW_NO_AUTO_UPDATE=1
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
