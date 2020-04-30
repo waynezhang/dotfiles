@@ -194,3 +194,5 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 ### End of Zinit's installer chunk
 ### End of Zinit's installer chunk
 ### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
