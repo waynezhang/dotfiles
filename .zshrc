@@ -37,6 +37,11 @@ zplugin ice silent wait'!0'; zplugin light rupa/z
 zplugin ice silent wait'!0'; zplugin light zsh-users/zsh-completions
 zplugin ice svn silent wait'!0'; zplugin snippet OMZ::plugins/colored-man-pages
 
+zplugin ice slient wait'!0'; zplugin light hchbaw/zce.zsh
+bindkey "^Xz" zce
+zstyle ':zce:*' fg 'fg=red,bold'
+zstyle ':zce:*' bg 'fg=white'
+
 function zsh_highlight_setup {
   ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
   ZSH_HIGHLIGHT_PATTERNS+=('rm -rf [~/]*' 'fg=white,bold,bg=red')
