@@ -1,0 +1,6 @@
+.ssh/config
+.ssh/id_rsa
+.ssh/id_rsa.pub
+.ssh/id_rsa_private
+.ssh/id_rsa_private.pub
+.zsh_custom.sh

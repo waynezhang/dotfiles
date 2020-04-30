@@ -17,6 +17,7 @@ export WORDCHARS=''
 export GIT_EDITOR="vim"
 export CLICOLOR=1
 export LSCOLORS="gxfxcxdxbxegedabagacad"
+export GPG_TTY=$(tty)
 
 ################################
 # plugins
