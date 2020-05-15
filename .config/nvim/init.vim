@@ -45,9 +45,19 @@ Plug 'mhinz/vim-signify'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 nnoremap <C-p> :FZF<cr>
 
+Plug 'junegunn/fzf.vim'
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+nnoremap <C-e> :RG<space>
+
 " ack
 Plug 'jremmen/vim-ripgrep'
-nnoremap <C-e> :Rg<space>
 
 " run
 Plug 'thinca/vim-quickrun'
@@ -62,8 +72,9 @@ Plug 'w0rp/ale' " lint
 
 Plug 'nanotech/jellybeans.vim', { 'as': 'jellybeans' }
 
-Plug 'nathanaelkane/vim-indent-guides'
-let g:indent_guides_enable_on_vim_startup = 1
+Plug 'Yggdroot/indentLine'
+Plug 'lukas-reineke/indent-blankline.nvim'
+let g:indentLine_char = '|'
 
 Plug 'terryma/vim-expand-region'
 
