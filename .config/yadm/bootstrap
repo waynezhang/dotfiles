@@ -3,7 +3,7 @@
 cd ~
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
-# yadm checkout .zshrc
+yadm checkout .zshrc
 zsh -c "source ~/.zshrc"
 
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
