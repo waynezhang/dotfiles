@@ -29,17 +29,9 @@ command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 " lsp
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
-if executable('sourcekit-lsp')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'sourcekit-lsp',
-        \ 'cmd': {server_info->['sourcekit-lsp']},
-        \ 'whitelist': ['swift'],
-        \ })
-endif
-autocmd FileType swift nnoremap <C-]> :LspDefinition<CR>
-autocmd FileType swift setlocal omnifunc=lsp#complete
-
+Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
+set omnifunc=lsp#complete
 
 " motion
 Plug 'joequery/Stupid-EasyMotion'
@@ -132,6 +124,8 @@ endif
 
 colorscheme jellybeans
 se cursorline
+hi Normal ctermbg=none
+hi NonText ctermbg=none
 hi CursorLine cterm=none ctermbg=236
 highlight SignColumn ctermbg=black
 highlight SignifySignAdd ctermbg=black ctermfg=green
