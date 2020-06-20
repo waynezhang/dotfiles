@@ -43,6 +43,7 @@ Plug 'mhinz/vim-signify'
 
 " File finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+let $FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git --exclude tulsi-workspace --color=always'
 nnoremap <C-p> :FZF<cr>
 
 Plug 'junegunn/fzf.vim'
@@ -54,10 +55,10 @@ function! RipgrepFzf(query, fullscreen)
   call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
 endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
-nnoremap <C-e> :RG<space>
 
 " ack
 Plug 'jremmen/vim-ripgrep'
+nnoremap <C-e> :Rg<space>
 
 " run
 Plug 'thinca/vim-quickrun'
