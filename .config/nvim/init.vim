@@ -31,7 +31,6 @@ Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'ryanolsonx/vim-lsp-typescript'
 set omnifunc=lsp#complete
 
 " motion
