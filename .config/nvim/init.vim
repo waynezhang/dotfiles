@@ -63,6 +63,14 @@ nnoremap <C-e> :Rg<space>
 " run
 Plug 'thinca/vim-quickrun'
 nmap <Leader>r :QuickRun<cr>
+let g:quickrun_config = {}
+let g:quickrun_config['typescript'] = { 'type' : 'typescript/tsc' }
+let g:quickrun_config['typescript/tsc'] = {
+\   'command': 'tsc',
+\   'exec': ['%c --target esnext --module commonjs --esModuleInterop %o %s', 'node %s:r.js'],
+\   'tempfile': '%{tempname()}.ts',
+\   'hook/sweep/files': ['%S:p:r.js'],
+\ }
 
 Plug 'guns/xterm-color-table.vim' " color
 Plug 'gregsexton/MatchTag', { 'for': [ 'html', 'xml' ] } " html tag
