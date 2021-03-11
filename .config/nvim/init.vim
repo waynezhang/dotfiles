@@ -69,7 +69,7 @@ Plug 'gregsexton/MatchTag', { 'for': [ 'html', 'xml' ] } " html tag
 Plug 'vim-scripts/matchit.zip' " % match
 Plug 'sheerun/vim-polyglot' " language pack
 
-Plug 'w0rp/ale' " lint
+Plug 'dense-analysis/ale' " lint
 
 Plug 'nanotech/jellybeans.vim', { 'as': 'jellybeans' }
 
@@ -82,6 +82,8 @@ Plug 'terryma/vim-expand-region'
 Plug 'ianding1/leetcode.vim'
 let g:leetcode_solution_filetype='javascript'
 let g:leetcode_username="linghua.zhang@me.com"
+
+Plug 'will133/vim-dirdiff'
 
 call plug#end()
 
