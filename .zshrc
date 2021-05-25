@@ -169,6 +169,6 @@ export FZF_ALT_C_COMMAND='fd --type directory --color=always'
 
 [[ -s ~/.zsh_custom.sh ]] && . ~/.zsh_custom.sh
 
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 
 export HOMEBREW_NO_AUTO_UPDATE=1

@@ -1,7 +1,0 @@
-.ssh/config
-.ssh/id_rsa
-.ssh/id_rsa.pub
-.ssh/id_rsa_private
-.ssh/id_rsa_private.pub
-.ssh/authorized_keys
-.zsh_custom.sh
