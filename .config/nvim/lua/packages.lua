@@ -27,3 +27,5 @@ paq 'adelarsq/vim-matchit'
 paq 'Yggdroot/indentLine'
 paq 'lukas-reineke/indent-blankline.nvim'
 vim.g.indentLine_char = '|'
+-- others
+paq 'yamatsum/nvim-cursorline'
