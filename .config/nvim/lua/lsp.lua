@@ -1,16 +1,24 @@
 require('paq-nvim').paq 'neovim/nvim-lspconfig'
+require('paq-nvim').paq 'kabouzeid/nvim-lspinstall'
 
-require('lspconfig').sourcekit.setup {}
-require('lspconfig').pyright.setup {}
-require('lspconfig').tsserver.setup {}
+local function setup_servers()
+  require'lspinstall'.setup()
+  local servers = require'lspinstall'.installed_servers()
+  for _, server in pairs(servers) do
+    require'lspconfig'[server].setup{}
+  end
+end
 
-local sumneko_root_path = vim.fn.expand('$HOME') .. '/Projects/lua-language-server'
-require('lspconfig').sumneko_lua.setup {
-  cmd = {
-    sumneko_root_path .. '/bin/macOS/lua-language-server',
-    '-E',
-    sumneko_root_path .. '/main.lua'
-  },
+setup_servers()
+
+-- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
+require'lspinstall'.post_install_hook = function ()
+  setup_servers() -- reload installed servers
+  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+end
+
+
+require('lspconfig').lua.setup {
   settings = {
     Lua = {
       diagnostics = {
