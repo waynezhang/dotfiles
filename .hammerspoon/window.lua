@@ -1,6 +1,8 @@
 -- utility
 
-function resizeAndMove(dx, dy, dw, dh)
+local log = hs.logger.new('window','debug')
+
+local function resizeAndMove(dx, dy, dw, dh)
   return function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
@@ -8,19 +10,17 @@ function resizeAndMove(dx, dy, dw, dh)
     local max = screen:fullFrame()
 
     f.x = max.x + max.w * dx
-    f.y = max.h * dy
+    f.y = max.y + max.h * dy
     f.w = max.w * dw
     f.h = max.h * dh
     win:setFrame(f)
   end
 end
 
-function resize(dw, dh)
+local function resize(dw, dh)
   return function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
-    local screen = win:screen()
-    local max = screen:fullFrame()
 
     f.w = f.w * dw
     f.h = f.h * dh
@@ -28,12 +28,10 @@ function resize(dw, dh)
   end
 end
 
-function move(dx, dy)
+local function move(dx, dy)
   return function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
-    local screen = win:screen()
-    local max = screen:fullFrame()
 
     f.x = f.x + f.w * dx
     f.y = f.y + f.h * dy
