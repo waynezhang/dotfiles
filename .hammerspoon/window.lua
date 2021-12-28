@@ -44,7 +44,8 @@ end
 hs.hotkey.bind({ "ctrl", "cmd" }, "left", resizeAndMove(0, 0, 0.5, 1))
 hs.hotkey.bind({ "ctrl", "cmd" }, "right", resizeAndMove(0.5, 0, 0.5, 1))
 hs.hotkey.bind({ "ctrl", "cmd" }, "up", resizeAndMove(0, 0, 1, 0.5))
-hs.hotkey.bind({ "ctrl", "cmd" }, "down", resizeAndMove(0, 0.5, 1, 0.5))
+hs.hotkey.bind({ "ctrl", "cmd" }, "up", resizeAndMove(0, 0, 1, 0.5))
+hs.hotkey.bind({ "ctrl", "shift", "cmd" }, "up", resizeAndMove(0.1, 0.05, 0.8, 0.9))
 
 -- resize
 hs.hotkey.bind({ "ctrl", "alt" }, "left", resize(0.9, 1))
