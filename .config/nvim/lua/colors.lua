@@ -1,5 +1,3 @@
-require('paq-nvim').paq { 'nanotech/jellybeans.vim', as = 'jellybeans' }
-
 vim.g.jellybeans_overrides = {
 	background = { guibg = 'none' },
 	Visual = { guibg = '5050505' },
