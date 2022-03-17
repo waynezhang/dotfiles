@@ -1,3 +1,5 @@
+use 'nanotech/jellybeans.vim'
+
 vim.g.jellybeans_overrides = {
 	background = { guibg = 'none' },
 	Visual = { guibg = '5050505' },
