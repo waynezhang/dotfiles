@@ -10,3 +10,5 @@ user.setup()
 use = user.use
 
 use 'faerryn/user.nvim'
+
+vim.api.nvim_command("command PlugUpdate lua require('user').update()")
