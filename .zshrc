@@ -23,21 +23,21 @@ export GPG_TTY=$(tty)
 # plugins
 ################################
 
-source "$HOME/.zinit/bin/zplugin.zsh"
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 
-zplugin snippet OMZ::lib/git.zsh
-zplugin ice svn; zplugin snippet OMZ::plugins/git 
+zinit snippet OMZ::lib/git.zsh
+zinit ice svn; zinit snippet OMZ::plugins/git 
 
-zplugin ice silent wait'!0'; zplugin light zsh-users/zsh-history-substring-search
+zinit ice silent wait'!0'; zinit light zsh-users/zsh-history-substring-search
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 
-zplugin ice silent wait'!0'; zplugin light changyuheng/fz
-zplugin ice silent wait'!0'; zplugin light rupa/z
-zplugin ice silent wait'!0'; zplugin light zsh-users/zsh-completions
-zplugin ice svn silent wait'!0'; zplugin snippet OMZ::plugins/colored-man-pages
+zinit ice silent wait'!0'; zinit light changyuheng/fz
+zinit ice silent wait'!0'; zinit light rupa/z
+zinit ice silent wait'!0'; zinit light zsh-users/zsh-completions
+zinit ice svn silent wait'!0'; zinit snippet OMZ::plugins/colored-man-pages
 
-zplugin ice slient wait'!0'; zplugin light hchbaw/zce.zsh
+zinit ice slient wait'!0'; zinit light hchbaw/zce.zsh
 bindkey "^Xz" zce
 zstyle ':zce:*' fg 'fg=red,bold'
 zstyle ':zce:*' bg 'fg=white'
@@ -66,9 +66,13 @@ zstyle ':completion:*:default' list-prompt '%S%M matches%s'
 zstyle ':completion:*:*:*:*:processes' command 'ps -u $USER -o pid,user,comm -w'
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;36=0=01'
 
-BREW_PREFIX="/usr/local/opt"
-fpath=("$BREW_PREFIX"/zsh/share/zsh/functions $fpath)
-autoload -U compinit && compinit
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
 
 ################################
 # prompt
@@ -127,7 +131,7 @@ setopt share_history
 # alias & functions
 ################################
 
-alias gu="git-up"
+alias gu="git up"
 alias gbda='git branch --no-color --merged | command grep -vE "^(\*|\s*(master|QA|QA-mid)\s*$)" | command xargs -n 1 git branch -d'
 alias gl='git pull upstream "$(current_branch)"'
 alias ga='gu && gl'

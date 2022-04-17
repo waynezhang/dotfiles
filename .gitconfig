@@ -1,0 +1,9 @@
+[user]
+	email = linghua.zhang@me.com
+	name = Linghua Zhang
+[alias]
+	up = pull --rebase --autostash
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
