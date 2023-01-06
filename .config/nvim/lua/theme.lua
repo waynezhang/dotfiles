@@ -9,4 +9,8 @@ vim.g.jellybeans_overrides = {
 	SignifySignDelete = { guifg = 'ff0000' },
 	SignifySignChange = { guifg = 'ffff00' },
 }
-vim.cmd('silent! colorscheme jellybeans')
+if vim.fn.has("gui_vimr") > 0 then
+	vim.cmd('silent! colorscheme desert')
+else
+	vim.cmd('silent! colorscheme jellybeans')
+end

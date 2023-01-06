@@ -1,6 +1,8 @@
+use "folke/lua-dev.nvim"
 use 'williamboman/nvim-lsp-installer'
 use 'neovim/nvim-lspconfig'
-use "folke/lua-dev.nvim"
+
+require('nvim-lsp-installer').setup { use_file = true }
 
 local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -25,18 +27,18 @@ local on_attach = function(client, bufnr)
     set_normal_keymap('<space>f', 'vim.lsp.buf.formatting()')
 end
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-local lsp_installer = require 'nvim-lsp-installer'
-lsp_installer.on_server_ready(function(server)
-    if server.name == 'sumneko_lua' then
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local servers = require('nvim-lsp-installer.servers').get_installed_server_names()
+for _, server in ipairs(servers) do
+    if server == 'sumneko_lua' then
         local luadev = require("lua-dev").setup({})
         local lspconfig = require('lspconfig')
-        server:setup(luadev)
-        return
+        require('lspconfig')[server].setup(luadev)
+    else
+        local opts = {
+            on_attach = on_attach,
+            capabilities = capabilities,
+        }
+        require('lspconfig')[server].setup(opts)
     end
-    local opts = {
-        on_attach = on_attach,
-        capabilities = capabilities,
-    }
-    server:setup(opts)
-end)
+end

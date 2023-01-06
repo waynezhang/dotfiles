@@ -3,6 +3,7 @@ require 'plugins.syntax'
 require 'plugins.completion'
 require 'plugins.lsp'
 require 'plugins.git'
+require 'plugins.flutter'
 
 use 'nvim-lua/plenary.nvim'
 use 'nvim-telescope/telescope.nvim'
