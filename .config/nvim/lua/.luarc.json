@@ -1,0 +1,26 @@
+{
+    "workspace.library": [
+        "/Users/l-zhang/.local/share/nvim/lazy/neodev.nvim/types/stable",
+        "/opt/homebrew/Cellar/neovim/0.9.0/share/nvim/runtime/lua",
+        "/Users/l-zhang/.local/share/nvim/lazy/nvim-cursorline/lua",
+        "/Users/l-zhang/.local/share/nvim/lazy/hop.nvim/lua",
+        "/Users/l-zhang/.local/share/nvim/lazy/mason.nvim/lua",
+        "/Users/l-zhang/.local/share/nvim/lazy/cmp-nvim-lsp/lua",
+        "/Users/l-zhang/.local/share/nvim/lazy/mason-lspconfig.nvim/lua",
+        "/Users/l-zhang/.local/share/nvim/lazy/code_runner.nvim/lua",
+        "/Users/l-zhang/.local/share/nvim/lazy/cmp-buffer/lua",
+        "/Users/l-zhang/.local/share/nvim/lazy/nvim-dap/lua",
+        "/Users/l-zhang/.local/share/nvim/lazy/lazy.nvim/lua",
+        "/Users/l-zhang/.local/share/nvim/lazy/telescope.nvim/lua",
+        "/Users/l-zhang/.local/share/nvim/lazy/nvim-cmp/lua",
+        "/Users/l-zhang/.local/share/nvim/lazy/lualine.nvim/lua",
+        "/Users/l-zhang/.local/share/nvim/lazy/neodev.nvim/lua",
+        "/Users/l-zhang/.local/share/nvim/lazy/nvim-treesitter/lua",
+        "/Users/l-zhang/.local/share/nvim/lazy/plenary.nvim/lua",
+        "/Users/l-zhang/.local/share/nvim/lazy/nvim-lspconfig/lua",
+        "/Users/l-zhang/.local/share/nvim/lazy/cmp-vsnip/lua",
+        "/Users/l-zhang/.config/nvim/lua",
+        "${3rd}/luv/library",
+        "${3rd}/luassert/library"
+    ]
+}

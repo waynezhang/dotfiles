@@ -1,2 +1,4 @@
-use 'tpope/vim-fugitive'
-use 'mhinz/vim-signify'
+return {
+  { 'tpope/vim-fugitive' },
+  { 'mhinz/vim-signify' },
+}

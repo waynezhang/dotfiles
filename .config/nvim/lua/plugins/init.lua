@@ -1,25 +1,29 @@
-require 'plugins.statusline'
-require 'plugins.syntax'
-require 'plugins.completion'
-require 'plugins.lsp'
-require 'plugins.git'
-require 'plugins.flutter'
-
-use 'nvim-lua/plenary.nvim'
-use 'nvim-telescope/telescope.nvim'
-use 'nvim-telescope/telescope-symbols.nvim'
-use 'jremmen/vim-ripgrep'
-use 'thinca/vim-quickrun'
-use 'joequery/Stupid-EasyMotion'
-use 'yamatsum/nvim-cursorline'
-use 'chrisbra/matchit'
-
-use 'waynezhang/mdtodo.nvim'
-require'mdtodo'.setup({})
-vim.cmd([[
-  let g:markdown_folding = 1
-  au FileType markdown setlocal foldlevel=99
-
-  let g:vim_markdown_auto_insert_bullets = 0
-  let g:vim_markdown_new_list_item_indent = 0
-]])
+return {
+  { 'nvim-lua/plenary.nvim' },
+  { 'nvim-telescope/telescope.nvim' },
+  { 'nvim-telescope/telescope-symbols.nvim' },
+  {
+    'kyoh86/vim-ripgrep', config = function()
+      vim.api.nvim_create_user_command(
+      'Rg',
+      function(opts)
+        local arg = opts.args
+        if(arg == '') then
+          arg = vim.fn['expand']('<cword>')
+        end
+        vim.fn['ripgrep#search'](arg)
+      end,
+      { nargs = '*' }
+      )
+    end
+  },
+  { 'phaazon/hop.nvim', config = function() require'hop'.setup() end },
+  {
+    'yamatsum/nvim-cursorline', config = function()
+      require('nvim-cursorline').setup {
+        cursorword = { enable = true }
+      }
+    end
+  },
+  { 'chrisbra/matchit' }
+}
