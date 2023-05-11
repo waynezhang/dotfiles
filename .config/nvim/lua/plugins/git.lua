@@ -1,4 +1,18 @@
 return {
   { 'tpope/vim-fugitive' },
-  { 'mhinz/vim-signify' },
+  {
+    'lewis6991/gitsigns.nvim', config = function ()
+      require('gitsigns').setup({
+        signs = {
+          add          = { text = '+' },
+          change       = { text = '!' },
+          delete       = { text = '_' },
+          topdelete    = { text = '‾' },
+          changedelete = { text = '~' },
+          untracked    = { text = '┆' },
+        },
+        yadm = { enable = true }
+      })
+    end
+  },
 }

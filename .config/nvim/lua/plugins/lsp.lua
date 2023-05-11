@@ -2,7 +2,7 @@ return {
   {
     'folke/neodev.nvim',
     config = function() require('neodev').setup({}) end,
-    dependencies = 'neovim/nvim-lspconfig'
+    dependencies = { 'neovim/nvim-lspconfig' }
   },
   { 'williamboman/mason.nvim', config = function() require('mason').setup() end },
   {
@@ -41,4 +41,5 @@ return {
   },
   { 'neovim/nvim-lspconfig' },
   { 'mfussenegger/nvim-dap' },
+  { 'folke/trouble.nvim', dependencies = { 'nvim-tree/nvim-web-devicons'}},
 }

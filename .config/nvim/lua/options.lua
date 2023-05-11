@@ -5,7 +5,6 @@ require('common').set_options({
   expandtab = true,
   number = true,
   scrolloff = 3,
-  encoding = 'utf-8',
   clipboard = 'unnamed',
   -- search
   ignorecase = true,
