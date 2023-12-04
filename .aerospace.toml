@@ -1,0 +1,56 @@
+start-at-login = true
+
+gaps.inner.horizontal = 4
+gaps.inner.vertical = 4
+
+[workspace-to-monitor-force-assignment]
+0 = 'main'
+2 = 'secondary'
+9 = 'secondary'
+Q = 'secondary'
+S = 'secondary'
+
+# WezTerm
+[[on-window-detected]]
+if.app-id = 'com.github.wez.wezterm'
+run = 'move-node-to-workspace W'
+if.during-aerospace-startup = true
+[[on-window-detected]]
+if.app-id = 'com.github.wez.wezterm'
+run = 'move-node-to-workspace W'
+
+# MailMate
+[[on-window-detected]]
+if.app-id = 'com.freron.MailMate'
+run = 'move-node-to-workspace M'
+if.during-aerospace-startup = true
+[[on-window-detected]]
+if.app-id = 'com.freron.MailMate'
+run = 'move-node-to-workspace M'
+
+# Safari
+[[on-window-detected]]
+if.app-id = 'com.apple.Safari'
+run = 'move-node-to-workspace S'
+if.during-aerospace-startup = true
+[[on-window-detected]]
+if.app-id = 'com.apple.Safari'
+run = 'move-node-to-workspace S'
+
+# Slack
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = 'move-node-to-workspace 9'
+if.during-aerospace-startup = true
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = 'move-node-to-workspace 9'
+
+# Logseq
+[[on-window-detected]]
+if.app-id = 'com.electron.logseq'
+run = 'move-node-to-workspace Q'
+if.during-aerospace-startup = true
+[[on-window-detected]]
+if.app-id = 'com.electron.logseq'
+run = 'move-node-to-workspace Q'
