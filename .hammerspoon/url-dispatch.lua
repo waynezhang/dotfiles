@@ -1,5 +1,10 @@
 hs.loadSpoon("SpoonInstall")
 
+function appID(app)
+  return hs.application.infoForBundlePath(app)['CFBundleIdentifier']
+end
+Slack = appID('/Applications/Slack.app')
+
 spoon.SpoonInstall:andUse("URLDispatcher",
   {
     config = {
@@ -23,6 +28,7 @@ spoon.SpoonInstall:andUse("URLDispatcher",
         { "https?://mercari%.testrail%.*/*", "com.google.Chrome" },
         { "https?://forms%.gle/*", "com.google.Chrome" },
         { "https?://storage.cloud.google.com/kouzoh-.*%.apk", "com.google.Chrome" },
+        { "https?://mercari.slack.com/*", Slack },
       },
     },
     start = true

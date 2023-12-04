@@ -1,4 +1,4 @@
-require "window"
+-- require "window"
 require "viKeys"
 require "yen-key"
 require "url-dispatch"
