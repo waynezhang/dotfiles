@@ -1,5 +1,3 @@
-hs.loadSpoon("SpoonInstall")
-
 function appID(app)
   return hs.application.infoForBundlePath(app)['CFBundleIdentifier']
 end

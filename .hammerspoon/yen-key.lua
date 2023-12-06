@@ -10,7 +10,6 @@
 
 -- @author Hisateru Tanaka (tanakahisateru@gmail.com)
 
-local VK_1 = 0x12
 local VK_ESC = 0x35
 
 -- Secret key codes not included in hs.keycodes.map
@@ -51,12 +50,6 @@ jisKeyboardFilter = hs.eventtap.new({
         if flagsMatches(f, {}) then
             event:setKeyCode(VK_JIS_YEN)
             event:setFlags({alt=true})
-        end
-    elseif c == VK_1 then
-        -- Customization example: Option+1 => ESC
-        if flagsMatches(f, {'alt'}) then
-            event:setKeyCode(VK_ESC)
-            event:setFlags({})
         end
     end
 end)
