@@ -6,6 +6,8 @@ alias vim="nvim"
 
 alias ls='exa'
 
+function ya() { yadm add "$@"; yadm commit; }
+
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 
 setopt completealiases

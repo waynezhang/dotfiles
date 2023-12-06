@@ -12,6 +12,7 @@ COMP_WORDBREAKS=${COMP_WORDBREAKS/=/}
 COMP_WORDBREAKS=${COMP_WORDBREAKS/@/}
 export COMP_WORDBREAKS
 export WORDCHARS=''
+export EDITOR="vim"
 export GIT_EDITOR="vim"
 export CLICOLOR=1
 export LSCOLORS="gxfxcxdxbxegedabagacad"
