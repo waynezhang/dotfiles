@@ -1,7 +1,0 @@
-set ignorecase
-set hlsearch
-set incsearch
-set number
-set clipboard=unnamed
-map <C-i> :xccmd goForwardInHistoryByCommand<CR>
-map <C-t> :xccmd goBackInHistoryByCommand<CR>

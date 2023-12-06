@@ -1,8 +1,10 @@
 # basic
-#
+
 setopt no_beep
 setopt pushd_ignore_dups
 setopt extended_glob
+
+bindkey -e
 
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -22,19 +24,19 @@ export PATH=/usr/local/share/npm/bin:/usr/local/bin:/usr/local/sbin:/usr/libexec
 
 # plugins
 
-source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+source $HOMEBREW_PREFIX/opt/zinit/zinit.zsh
 
 zinit snippet OMZ::lib/git.zsh
-zinit ice svn; zinit snippet OMZ::plugins/git 
+zinit snippet OMZ::plugins/git/git.plugin.zsh
 
 zinit ice silent wait'!0'; zinit light zsh-users/zsh-history-substring-search
-bindkey -M emacs '^P' history-substring-search-up
-bindkey -M emacs '^N' history-substring-search-down
+bindkey '^P' history-substring-search-up
+bindkey '^N' history-substring-search-down
 
 zinit ice silent wait'!0'; zinit light changyuheng/fz
 zinit ice silent wait'!0'; zinit light rupa/z
 zinit ice silent wait'!0'; zinit light zsh-users/zsh-completions
-zinit ice svn silent wait'!0'; zinit snippet OMZ::plugins/colored-man-pages
+zinit ice silent wait'!0'; zinit snippet OMZ::plugins/colored-man-pages
 
 zinit ice slient wait'!0'; zinit light hchbaw/zce.zsh
 bindkey "^Xz" zce
