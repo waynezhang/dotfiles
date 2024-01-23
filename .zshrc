@@ -48,12 +48,14 @@ function zsh_highlight_setup {
   ZSH_HIGHLIGHT_PATTERNS+=('rm -rf [~/]*' 'fg=white,bold,bg=red')
   ZSH_HIGHLIGHT_STYLES[path]=''
 }
-zplugin ice silent wait'!0' atload'zsh_highlight_setup'; zplugin light zsh-users/zsh-syntax-highlighting
+zinit ice silent wait'!0' atload'zsh_highlight_setup'; zinit light zsh-users/zsh-syntax-highlighting
 
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
 for conf in "$HOME/.zsh.d/"*.zsh; do
   source "${conf}"
 done
 unset conf
+
+eval "$(mise activate zsh)"

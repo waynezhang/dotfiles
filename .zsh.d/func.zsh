@@ -4,7 +4,7 @@ alias gbda='git branch --no-color --merged | command grep -vE "^(\*|\s*(master|Q
 alias vi="nvim"
 alias vim="nvim"
 
-alias ls='exa'
+alias ls='eza'
 
 function ya() { yadm add "$@"; yadm commit; }
 
