@@ -1,7 +1,6 @@
 function appID(app)
   return hs.application.infoForBundlePath(app)['CFBundleIdentifier']
 end
-Slack = appID('/Applications/Slack.app')
 
 spoon.SpoonInstall:andUse("URLDispatcher",
   {
@@ -26,7 +25,8 @@ spoon.SpoonInstall:andUse("URLDispatcher",
         { "https?://mercari%.testrail%.*/*", "com.google.Chrome" },
         { "https?://forms%.gle/*", "com.google.Chrome" },
         { "https?://storage.cloud.google.com/kouzoh-.*%.apk", "com.google.Chrome" },
-        { "https?://mercari.slack.com/*", Slack },
+        { "https?://mercari.slack.com/*", appID('/Applications/Slack.app') },
+        { "https?://mercari.blameless.io/*", "com.google.Chrome" },
       },
     },
     start = true
