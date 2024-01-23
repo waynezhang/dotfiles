@@ -33,7 +33,18 @@ return {
         { { name = 'vsnip' } }
         )
       })
-    end
+
+      cmp.setup.filetype({ "gitcommit", "NeogitCommitMessage" }, {
+        sources = {
+          { name = "conventionalcommits" },
+          { name = "async_path" },
+        },
+        { name = "buffer" },
+      })
+    end,
+    dependencies = {
+      { 'davidsierradz/cmp-conventionalcommits' },
+    },
   },
   { 'hrsh7th/cmp-vsnip' },
   { 'hrsh7th/vim-vsnip' },

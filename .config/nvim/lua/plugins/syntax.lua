@@ -6,16 +6,12 @@ return {
         ensure_installed = { 'javascript', 'swift', 'bash', 'java', 'kotlin', 'lua', 'markdown', 'json', 'html', 'go', 'gitignore', 'gitcommit', 'diff', 'css', 'dart' },
         highlight = {
           enable = true,
-        }
+        },
+        indent = {
+          enable = true,
+        },
       }
-    end
+    end,
   },
-  -- {
-  --   'xbase-lab/xbase',
-  --   build = 'make install',
-  --   dependencies = {'neovim/nvim-lspconfig'},
-  --   config = function ()
-  --     require('xbase').setup({})
-  --   end
-  -- }
+  'darfink/vim-plist',
 }
