@@ -1,9 +1,15 @@
-[user]
-	email = linghua.zhang@me.com
-	name = Linghua Zhang
-[alias]
-	up = pull --rebase --autostash
-[pull]
-	rebase = true
 [rebase]
 	autoStash = true
+[pull]
+	rebase = true
+[alias]
+	up = pull --rebase --autostash
+[user]
+	name = Linghua Zhang
+	email = linghua.zhang@me.com
+[init]
+	defaultBranch = main
+[credential]
+	helper = osxkeychain
+[commit]
+	template = ~/.config/git/template

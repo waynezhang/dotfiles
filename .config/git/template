@@ -1,0 +1,12 @@
+
+# feat        feature
+# fix         bug fix
+# docs        documentation only changes
+# style       formatting
+# refactor    refactoring
+# perf        performance improvement
+# test        adding missing tests or correcting existing tests
+# build       build system
+# ci          CI changes
+# chore       maintain
+# revert      reverts
