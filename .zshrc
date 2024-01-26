@@ -26,9 +26,6 @@ export PATH=/usr/local/share/npm/bin:/usr/local/bin:/usr/local/sbin:/usr/libexec
 
 source $HOMEBREW_PREFIX/opt/zinit/zinit.zsh
 
-zinit snippet OMZ::lib/git.zsh
-zinit snippet OMZ::plugins/git/git.plugin.zsh
-
 zinit ice silent wait'!0'; zinit light zsh-users/zsh-history-substring-search
 bindkey '^P' history-substring-search-up
 bindkey '^N' history-substring-search-down
@@ -37,6 +34,8 @@ zinit ice silent wait'!0'; zinit light changyuheng/fz
 zinit ice silent wait'!0'; zinit light rupa/z
 zinit ice silent wait'!0'; zinit light zsh-users/zsh-completions
 zinit ice silent wait'!0'; zinit snippet OMZ::plugins/colored-man-pages
+zinit ice silent wait'!0'; zinit snippet OMZ::plugins/git/git.plugin.zsh
+zinit ice silent wait'!0'; zinit snippet OMZ::plugins/starship/starship.plugin.zsh
 
 zinit ice slient wait'!0'; zinit light hchbaw/zce.zsh
 bindkey "^Xz" zce

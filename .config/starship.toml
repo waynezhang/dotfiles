@@ -1,0 +1,58 @@
+format = """
+$hostname\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+${custom.git_status}\
+$jobs\
+$character"""
+
+right_format="""
+$status
+"""
+
+add_newline = false
+
+[hostname]
+format = "[$hostname]($style) "
+ssh_only = false
+style = "cyan"
+
+[directory]
+truncate_to_repo = false
+truncation_length = 1
+style = "cyan"
+
+[jobs]
+format = "\\([$number]($style)\\) "
+number_threshold = 1
+style = "green"
+
+[character]
+format = "→ "
+
+[status]
+format = '→ [$common_meaning $status]($style)'
+disabled = false
+
+[git_branch]
+format = "[$branch ]($style)"
+style = "red"
+
+[git_commit]
+format = "[$hash$tag ]($style)"
+style = "red"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+[custom.git_status]
+when = """
+[[ -n $(/usr/bin/git status -s --ignore-submodules=dirty -uno 2>/dev/null | tail -n 1) ]]
+"""
+require_repo = true
+symbol = "✘ "
+format = "[$symbol]($style)"
+style = "yellow"
