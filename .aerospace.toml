@@ -10,7 +10,6 @@ gaps.outer.right = 2
 
 [mode.main.binding]
 alt-ctrl-slash = 'mode cmd'
-alt-ctrl-semicolon = 'mode resize'
 
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
@@ -25,6 +24,7 @@ alt-x = 'workspace X'
 alt-shift-1 = 'move-node-to-workspace 1'
 alt-shift-2 = 'move-node-to-workspace 2'
 alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
 alt-shift-9 = 'move-node-to-workspace 9'
 alt-shift-m = 'move-node-to-workspace M'
 alt-shift-q = 'move-node-to-workspace Q'
@@ -43,9 +43,6 @@ j = ['join-with down', 'mode main']
 k = ['join-with up', 'mode main']
 l = ['join-with right', 'mode main']
 r = ['reload-config', 'mode main']
-esc = ['mode main']
-
-[mode.resize.binding]
 minus = 'resize smart -50'
 space = 'resize smart +50'
 esc = ['mode main']
