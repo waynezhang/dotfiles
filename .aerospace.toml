@@ -15,6 +15,7 @@ alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
 alt-9 = 'workspace 9'
+alt-c = 'workspace C'
 alt-m = 'workspace M'
 alt-q = 'workspace Q'
 alt-s = 'workspace S'
@@ -26,6 +27,7 @@ alt-shift-2 = 'move-node-to-workspace 2'
 alt-shift-3 = 'move-node-to-workspace 3'
 alt-shift-4 = 'move-node-to-workspace 4'
 alt-shift-9 = 'move-node-to-workspace 9'
+alt-shift-c = 'move-node-to-workspace C'
 alt-shift-m = 'move-node-to-workspace M'
 alt-shift-q = 'move-node-to-workspace Q'
 alt-shift-s = 'move-node-to-workspace S'
@@ -61,7 +63,7 @@ run = 'move-node-to-workspace W'
 
 # MailMate
 [[on-window-detected]]
-if.app-id = 'com.freron.MailMate'
+if.app-id = 'com.google.Chrome.app.fmgjjmmmlfnkbppncabfkddbjimcfncm'
 run = 'move-node-to-workspace M'
 
 # Safari
@@ -83,3 +85,8 @@ run = 'move-node-to-workspace Q'
 [[on-window-detected]]
 if.app-id = 'com.apple.dt.Xcode'
 run = 'move-node-to-workspace X'
+
+# ChatGPT
+[[on-window-detected]]
+if.app-id = 'com.openai.chat'
+run = 'move-node-to-workspace C'
