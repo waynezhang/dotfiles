@@ -10,6 +10,10 @@
 [init]
 	defaultBranch = main
 [credential]
-	helper = osxkeychain
+	helper = manager-core
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
 [commit]
 	template = ~/.config/git/template
+[core]
+	excludesfile = ~/.gitignore_global
