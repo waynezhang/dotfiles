@@ -37,48 +37,53 @@ local function find_swiftformat_config()
 end
 
 return {
-  "stevearc/conform.nvim",
-  config = function()
-    local conform = require("conform")
+  {
+    'junegunn/vim-easy-align',
+  },
+  {
+    "stevearc/conform.nvim",
+    config = function()
+      local conform = require("conform")
 
-    conform.setup({
-      formatters_by_ft = {
-        swift = { "swiftformat_ext" },
-      },
-      format_on_save = function(bufnr)
-        return { timeout_ms = 500, lsp_fallback = true }
-      end,
-      log_level = vim.log.levels.ERROR,
-      formatters = {
-        swiftformat_ext = {
-          command = "swiftformat",
-          args = function()
-            return {
-              "--config",
-              find_swiftformat_config() or "~/.config/nvim/.swiftformat", -- update fallback path if needed
-              "--stdinpath",
-              "$FILENAME",
-            }
-          end,
-          function(ctx)
-            return {
-              "--config",
-              find_swiftformat_config() or "~/.config/nvim/.swiftformat", -- update fallback path if needed
-              "--linerange",
-              ctx.range.start[1] .. "," .. ctx.range["end"][1],
-            }
-          end,
-          stdin = true,
+      conform.setup({
+        formatters_by_ft = {
+          swift = { "swiftformat_ext" },
         },
-      },
-    })
-
-    vim.keymap.set({ "n", "v" }, "<leader>mp", function()
-      conform.format({
-        lsp_fallback = true,
-        async = false,
-        timeout_ms = 500,
+        format_on_save = function(bufnr)
+          return { timeout_ms = 500, lsp_fallback = true }
+        end,
+        log_level = vim.log.levels.ERROR,
+        formatters = {
+          swiftformat_ext = {
+            command = "swiftformat",
+            args = function()
+              return {
+                "--config",
+                find_swiftformat_config() or "~/.config/nvim/.swiftformat", -- update fallback path if needed
+                "--stdinpath",
+                "$FILENAME",
+              }
+            end,
+            function(ctx)
+              return {
+                "--config",
+                find_swiftformat_config() or "~/.config/nvim/.swiftformat", -- update fallback path if needed
+                "--linerange",
+                ctx.range.start[1] .. "," .. ctx.range["end"][1],
+              }
+            end,
+            stdin = true,
+          },
+        },
       })
-    end, { desc = "Format file or range (in visual mode)" })
-  end,
+
+      vim.keymap.set({ "n", "v" }, "<leader>mp", function()
+        conform.format({
+          lsp_fallback = true,
+          async = false,
+          timeout_ms = 500,
+        })
+      end, { desc = "Format file or range (in visual mode)" })
+    end,
+  },
 }

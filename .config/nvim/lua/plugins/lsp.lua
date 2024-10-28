@@ -6,13 +6,14 @@ return {
   },
   { 'williamboman/mason.nvim', config = function() require('mason').setup() end },
   {
-    'williamboman/mason-lspconfig.nvim', config = function()
+    'williamboman/mason-lspconfig.nvim',
+    config = function()
       require('mason-lspconfig').setup()
 
       local on_attach = function(_, bufnr)
         local function set_normal_keymap(from, to)
           local opts = { noremap = true, silent = true }
-          vim.api.nvim_buf_set_keymap(bufnr, 'n', from, '<cmd> lua '..to..'<CR>', opts)
+          vim.api.nvim_buf_set_keymap(bufnr, 'n', from, '<cmd> lua ' .. to .. '<CR>', opts)
         end
 
         set_normal_keymap('gD', 'vim.lsp.buf.declaration()')
@@ -41,14 +42,24 @@ return {
         end
       })
 
-      require'lspconfig'.sourcekit.setup{
+      require 'lspconfig'.sourcekit.setup {
         on_attach = on_attach,
-        cmd = {'sourcekit-lsp'},
+        cmd = { 'sourcekit-lsp' },
         root_dir = nvim_lsp.util.root_pattern("Package.swift", ".git", "Project.swift"),
+      }
+
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+      require 'lspconfig'.html.setup {
+        capabilities = capabilities,
+      }
+      require 'lspconfig'.htmx.setup {
+        capabilities = capabilities,
       }
     end
   },
   { 'neovim/nvim-lspconfig' },
   { 'mfussenegger/nvim-dap' },
-  { 'folke/trouble.nvim', dependencies = { 'nvim-tree/nvim-web-devicons'}},
+  { 'folke/trouble.nvim',      dependencies = { 'nvim-tree/nvim-web-devicons' } },
 }
