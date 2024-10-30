@@ -49,12 +49,7 @@ function zsh_highlight_setup {
 }
 zinit ice silent wait'!0' atload'zsh_highlight_setup'; zinit light zsh-users/zsh-syntax-highlighting
 
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-
 for conf in "$HOME/.zsh.d/"*.zsh; do
   source "${conf}"
 done
 unset conf
-
-eval "$(mise activate zsh)"
