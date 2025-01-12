@@ -1,7 +1,3 @@
-function appID(app)
-  return hs.application.infoForBundlePath(app)['CFBundleIdentifier']
-end
-
 spoon.SpoonInstall:andUse("URLDispatcher",
   {
     config = {
@@ -24,12 +20,13 @@ spoon.SpoonInstall:andUse("URLDispatcher",
         { "https?://forms%.gle/*",                                 "com.google.Chrome" },
         { "https?://storage.cloud.google.com/kouzoh%-.*%.apk",     "com.google.Chrome" },
         { "https?://mercari%.workable%.com",                       "com.google.Chrome" },
-        { "https?://mercari%.slack%.com",                          appID('/Applications/Slack.app') },
+        { "https?://mercari%.slack%.com",                          "com.google.Chrome" },
         { "https?://mercari%.blameless%.io",                       "com.google.Chrome" },
         { "https?://workcloud%.jp",                                "com.google.Chrome" },
         { "https?://mercari%.docebosaas%.com",                     "com.google.Chrome" },
         { "https?://.*zapier%.com",                                "com.google.Chrome" },
         { "https?://merpay%-corp%-question%-jp%.firebaseapp%.com", "com.google.Chrome" },
+        { "https?://app%.datadoghq%.com",                          "com.google.Chrome" },
       },
     },
     start = true
