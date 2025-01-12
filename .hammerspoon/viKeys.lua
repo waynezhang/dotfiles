@@ -9,7 +9,6 @@ local watchable  = require "hs.watchable"
 
 
 local keyHandler = function(e)
-  print(">>")
   local watchFor = { h = "left", j = "down", k = "up", l = "right" }
   local actualKey = e:getCharacters(true)
   local replacement = watchFor[actualKey:lower()]
@@ -21,6 +20,7 @@ local keyHandler = function(e)
         table.insert(flags, k)
       end
     end
+    table.insert(flags, "fn") -- fn is required to simulate the exact key event (for compatibility with macSKK)
     if module.debugging then print("viKeys: " .. replacement, inspect(flags), isDown) end
     local replacementEvent = event.newKeyEvent(flags, replacement, isDown)
     if isDown then
